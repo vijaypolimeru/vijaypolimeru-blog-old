@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vijaypolimeru.github.io/atom.xml" rel="self" type="application/atom+xml" /><link href="https://vijaypolimeru.github.io/" rel="alternate" type="text/html" /><updated>2021-05-11T16:53:11+05:30</updated><id>https://vijaypolimeru.github.io/atom.xml</id><title type="html"> </title><subtitle> </subtitle><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><entry><title type="html">File Management - Tcl Master Series</title><link href="https://vijaypolimeru.github.io/file-management-learn-tcl-programming-from-scratch/" rel="alternate" type="text/html" title="File Management - Tcl Master Series" /><published>2020-04-05T00:00:00+05:30</published><updated>2020-04-05T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/file-handling-tcl-master-series</id><content type="html" xml:base="https://vijaypolimeru.github.io/file-management-learn-tcl-programming-from-scratch/">&lt;p&gt;This post in the &lt;a href=&quot;/Learn-Tcl-Programming-from-Scratch/&quot;&gt;Tcl Master Series&lt;/a&gt; is dedicated to discuss various &lt;strong&gt;&lt;em&gt;File Management&lt;/em&gt;&lt;/strong&gt; operations.&lt;/p&gt;
+
+&lt;p&gt;Basic file management operations such as open file, read data from file, write data to file, etc, can be performed as follows&lt;/p&gt;
+
+&lt;h4 id=&quot;open-file&quot;&gt;&lt;strong&gt;Open File&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;The syntax to open file is &lt;code class=&quot;highlighter-rouge&quot;&gt;set file_id [open file_name access_type]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In which &lt;code class=&quot;highlighter-rouge&quot;&gt;[open file_name access_type]&lt;/code&gt; opens the file with given access_type and returns a 
+unique file identifier into &lt;code class=&quot;highlighter-rouge&quot;&gt;file_id&lt;/code&gt; which can be used for further operations
+such as read, write, append data etc.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Access Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;r&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This opens and reads an existing file (file must exist). This is the default mode when no access type is specified&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;w&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This opens an existing file for writing, it will also delete the data in the existing file , if the file does not exist then a new file is created with the given file_name&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;a&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This opens an existing file for writing (file must exist), and appends the new data to the existing data&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;r+&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This opens an existing file (file must exist) for both reading and writing purposes, it appends the new data to the existing data&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;w+&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This opens an existing file for both reading writing, it will also delete the data in the existing file , if the file does not exist then a new file is created with the given file_name&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;a+&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;It is similar to access type &lt;code class=&quot;highlighter-rouge&quot;&gt;r+&lt;/code&gt;, the only difference is, if the file does not exist then a new file is created with the given file_name&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;read-from-file&quot;&gt;&lt;strong&gt;Read From File&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;The syntax to read file as &lt;code class=&quot;highlighter-rouge&quot;&gt;set file_data [read $file_id]&lt;/code&gt;.
+This command reads and stores the data into a string type variable &lt;code class=&quot;highlighter-rouge&quot;&gt;file_data&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;write-to-file&quot;&gt;&lt;strong&gt;Write to File&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Writing data into a file is done using &lt;code class=&quot;highlighter-rouge&quot;&gt;puts&lt;/code&gt; command as &lt;code class=&quot;highlighter-rouge&quot;&gt;puts $file_name &quot;text to write&quot;&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;puts $filename $data_to_store&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;close-file&quot;&gt;&lt;strong&gt;Close File&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;The syntax to close a file is &lt;code class=&quot;highlighter-rouge&quot;&gt;close $file_id&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;examples&quot;&gt;&lt;strong&gt;Examples&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Generate and store data in a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;data.out&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; for &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;set i 0&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &amp;lt; 10&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;incr i&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     lappend data &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr rand&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+ puts $data
+
+ set fid &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;open &lt;span class=&quot;s2&quot;&gt;&quot;data.out&quot;&lt;/span&gt; w&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ puts $fid $data
+ close $fid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;on each run, new data will be stored in &lt;code class=&quot;highlighter-rouge&quot;&gt;data.out&lt;/code&gt; file.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Read the &lt;code class=&quot;highlighter-rouge&quot;&gt;data.out&lt;/code&gt; file and store it into a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;file_data&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; set fid &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;open &lt;span class=&quot;s2&quot;&gt;&quot;data.out&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ set file_data &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;read $fid&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ puts $file_data
+ close $fid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;file_data&lt;/code&gt; is a string type variable&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Write new data to &lt;code class=&quot;highlighter-rouge&quot;&gt;data.out&lt;/code&gt; in addition to exisiting data&lt;/p&gt;
+
+    &lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; set fid &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;open &lt;span class=&quot;s2&quot;&gt;&quot;data.out&quot;&lt;/span&gt; r+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ set file_data &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;read $fid&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ puts $file_data
+
+ for &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;set i 0&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &amp;lt; 10&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;incr i&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     lappend data &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr rand&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+ puts $fid $data
+ close $fid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;if we replace &lt;code class=&quot;highlighter-rouge&quot;&gt;r+&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;w+&lt;/code&gt;, then everytime the new data is added to the file after deleting the old data&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Though, these are some basic file management operations, we never use them in this simplest form. We mainly operate on vectors, matrices, lists etc, performing
+file management operations on these type of variables is not that straight forward. Example codes for performing file management on
+these data types has been added &lt;a href=&quot;/some-useful-codes-learn-tcl-programming-from-scratch/&quot;&gt;here&lt;/a&gt;, please do check them and give your feedback&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details (if require) will be added soon…&lt;/p&gt;
+
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-22&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Tcl" /><category term="file" /><category term="file management" /><category term="file (I/O)" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">This post in the Tcl Master Series is dedicated to discuss various File Management operations.</summary></entry><entry><title type="html">Exception Handling - Tcl Master Series</title><link href="https://vijaypolimeru.github.io/exception-handling-learn-tcl-programming-from-scratch/" rel="alternate" type="text/html" title="Exception Handling - Tcl Master Series" /><published>2020-04-01T00:00:00+05:30</published><updated>2020-04-01T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/error-handling-tcl-master-series</id><content type="html" xml:base="https://vijaypolimeru.github.io/exception-handling-learn-tcl-programming-from-scratch/">&lt;p&gt;This post in the &lt;a href=&quot;/Learn-Tcl-Programming-from-Scratch/&quot;&gt;Tcl Master Series&lt;/a&gt; is dedicated to discuss various &lt;strong&gt;&lt;em&gt;Exception Handling&lt;/em&gt;&lt;/strong&gt; operations.&lt;/p&gt;
+
+&lt;p&gt;In this post we will understand tackling a very specific set of &lt;strong&gt;&lt;em&gt;exceptions&lt;/em&gt;&lt;/strong&gt; called &lt;strong&gt;&lt;em&gt;errors&lt;/em&gt;&lt;/strong&gt; using &lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;catch&lt;/code&gt; commands.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;error message&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;error location&lt;/code&gt; are two important features essential for users to resolve the error.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Error Message - gives description about the error, for example when I execute &lt;code class=&quot;highlighter-rouge&quot;&gt;puts &quot;print this&lt;/code&gt;, Komodo, throws an error message as follows&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; missing &quot;
+     while executing
+ &quot;puts &quot;print this
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;it gives us an idea about what is wrong with the code, in this case it shound be &lt;code class=&quot;highlighter-rouge&quot;&gt;puts &quot;print this&quot;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Error Location - The complete stack trace with line numbers, i.e. all the nested functions starting from the from the file which we executed. In the above
+example the stack trace will &lt;code class=&quot;highlighter-rouge&quot;&gt;(file &quot;error-file-1.tcl&quot; line 1)&lt;/code&gt;. Since it has only one line of code.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A more detailed example is as follows,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;proc fun3 {a b} {
+    return [fun2 $a $b]
+}
+proc fun2 {a b} {
+    return [fun1 $a $b]
+}
+proc fun1 {a b} {
+   return [expr tan($a/$b)]
+}
+puts &quot;Result = [fun1 10 0]&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this case the error message will be &lt;code class=&quot;highlighter-rouge&quot;&gt;divide by zero&lt;/code&gt; and the stack trace will be&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    while executing
+&quot;expr tan($a/$b)&quot;
+    (procedure &quot;fun1&quot; line 2)
+    invoked from within
+&quot;fun1 10 0&quot;
+    invoked from within
+&quot;puts &quot;Result = [fun1 10 0]&quot;&quot;
+    (file &quot;error-file-1.tcl&quot; line 13)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Tcl&lt;/code&gt; will take care of all the error handling mechanism, however, if the developer wants to show a custom error messages for some specific type of 
+calculations, in that case this can be done using the &lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;catch&lt;/code&gt; commands, in their simplest form, these commands can be implemented as follows&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;error errorMsg&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;catch {command} variable&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example, the above code can be re-written as follows&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;proc fun3 {a b} {
+    return [fun2 $a $b]
+}
+proc fun2 {a b} {
+    return [fun1 $a $b]
+}
+proc fun1 {a b} {
+   if {$b == 0} {
+      error &quot;Division not possible, because b = $b&quot;
+   } else {
+      return [expr tan($a/$b)]
+   }
+}
+
+catch {puts &quot;Result = [fun3 24 2]&quot;} errormessage
+puts $errormessage
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If we execute this using &lt;code class=&quot;highlighter-rouge&quot;&gt;[fun3 24 2]&lt;/code&gt;, it outouts &lt;code class=&quot;highlighter-rouge&quot;&gt;Result = -0.6358599286615808&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Else if we execute this using &lt;code class=&quot;highlighter-rouge&quot;&gt;[fun3 24 0]&lt;/code&gt; it outputs error message &lt;code class=&quot;highlighter-rouge&quot;&gt;Division not possible, because b = 0&lt;/code&gt; but does not provide stack trace, to get stack trace
+we have to explicitly ask &lt;code class=&quot;highlighter-rouge&quot;&gt;errorInfo&lt;/code&gt; using &lt;code class=&quot;highlighter-rouge&quot;&gt;puts&lt;/code&gt; as follows&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; proc fun3 {a b} {
+     return [fun2 $a $b]
+ }
+ proc fun2 {a b} {
+     return [fun1 $a $b]
+ }
+ proc fun1 {a b} {
+    if {$b == 0} {
+       error &quot;Division not possible, because b = $b&quot;
+    } else {
+       return [expr tan($a/$b)]
+    }
+ }
+
+ if {[catch {puts &quot;Result = [fun3 24 0]&quot;} errormessage]} {
+    puts $errormessage
+    puts $errorInfo
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;if we execute this we get&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; Division not possible, because b = 0
+ stack trace is ....
+     (procedure &quot;fun1&quot; line 1)
+     invoked from within
+ &quot;fun1 $a $b&quot;
+     (procedure &quot;fun2&quot; line 2)
+     invoked from within
+ &quot;fun2 $a $b&quot;
+     (procedure &quot;fun3&quot; line 2)
+     invoked from within
+ &quot;fun3 24 0&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note -&lt;/em&gt;&lt;/strong&gt; Sometimes both Komodo IDE and &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh.exe&lt;/code&gt; will provide stack trace in different formats, I suggest to use both to get to 
+appropriate error location.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details (if require) will be added soon…&lt;/p&gt;
+
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-22&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Tcl" /><category term="Errors" /><category term="Exceptions" /><category term="Error Handling" /><category term="Try and Catch" /><category term="Standard Tcl Library" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">This post in the Tcl Master Series is dedicated to discuss various Exception Handling operations.</summary></entry><entry><title type="html">Standard Tcl Library (Tcllib) - Examples - Tcl Master Series</title><link href="https://vijaypolimeru.github.io/tcllib-examples-learn-tcl-programming-from-scratch/" rel="alternate" type="text/html" title="Standard Tcl Library (Tcllib) - Examples - Tcl Master Series" /><published>2020-03-29T00:00:00+05:30</published><updated>2020-03-29T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/tcllib-examples-tcl-master-series</id><content type="html" xml:base="https://vijaypolimeru.github.io/tcllib-examples-learn-tcl-programming-from-scratch/">&lt;p&gt;This post in the &lt;a href=&quot;/Learn-Tcl-Programming-from-Scratch/&quot;&gt;Tcl Master Series&lt;/a&gt; is dedicated to discuss various packages 
+available in the &lt;strong&gt;&lt;em&gt;Standard Tcl Library (Tcllib)&lt;/em&gt;&lt;/strong&gt;. The emphasis is particularly laid upon
+the packages related to mathamatical operations.&lt;/p&gt;
+
+&lt;p&gt;The detailed documentation of &lt;strong&gt;&lt;em&gt;Tcllib&lt;/em&gt;&lt;/strong&gt; can be found &lt;a href=&quot;https://core.tcl-lang.org/tcllib/doc/tcllib-1-20/embedded/md/toc.md&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;namespaces-and-packages&quot;&gt;namespaces and packages&lt;/h2&gt;
+
+&lt;p&gt;Before going to discuss about the usage of various libraries in &lt;strong&gt;&lt;em&gt;tcllib&lt;/em&gt;&lt;/strong&gt;, it is very essential to know about a concept called &lt;code class=&quot;highlighter-rouge&quot;&gt;namespace&lt;/code&gt;. 
+In a computer program, the names of all program elements (such as variables, function names, memory addresses etc.) must be unique. 
+A namespace is an container created to hold the names of all program elements. The elements in a namespace are accessed using &lt;code class=&quot;highlighter-rouge&quot;&gt;::&lt;/code&gt; called 
+&lt;em&gt;scope resolution operator&lt;/em&gt;. Examples are as follows&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt; is a function residing in &lt;code class=&quot;highlighter-rouge&quot;&gt;math&lt;/code&gt; namespace, then &lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt; can be accessed as &lt;code class=&quot;highlighter-rouge&quot;&gt;::math::add&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;mean&lt;/code&gt; is a function residing in &lt;code class=&quot;highlighter-rouge&quot;&gt;statistics&lt;/code&gt; namespace which is nested in &lt;code class=&quot;highlighter-rouge&quot;&gt;math&lt;/code&gt; namespace, then &lt;code class=&quot;highlighter-rouge&quot;&gt;mean&lt;/code&gt; can be accessed as &lt;code class=&quot;highlighter-rouge&quot;&gt;::math::statistics::mean&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Packages are reusable units of code, in general these are also called as &lt;em&gt;libraries&lt;/em&gt;. Usually, every package comes with its own &lt;code class=&quot;highlighter-rouge&quot;&gt;namespace&lt;/code&gt; or sometimes have multiple 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;namespaces&lt;/code&gt;. &lt;em&gt;Tcllib&lt;/em&gt;  has plethora of packages available for every purpose. To use a function from a package, we must first add it to our program using
+the command &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packagename&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version_number&lt;/span&gt;&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;version_number&lt;/code&gt; is optional).&lt;/p&gt;
+
+&lt;p&gt;Lets discuss some examples to understand using &lt;em&gt;Tcllib&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;vectors-and-matrices&quot;&gt;Vectors and Matrices&lt;/h2&gt;
+
+&lt;p&gt;Various operations on vectors and matrices are explained through the following examples.&lt;/p&gt;
+
+&lt;h4 id=&quot;example-1---creating-vectors-and-matrices&quot;&gt;&lt;em&gt;Example 1&lt;/em&gt; - Creating vectors and matrices&lt;/h4&gt;
+
+&lt;p&gt;Tcllib provides &lt;code class=&quot;highlighter-rouge&quot;&gt;mkVector ndim value&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;mkMatrix nrows ncols value&lt;/code&gt; to create vectors and matrices. In matrix each row is arranged as a &lt;strong&gt;&lt;em&gt;list&lt;/em&gt;&lt;/strong&gt;.
+However, these matrices or vectors are initialised with a &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt;, which have to be modified later.&lt;/p&gt;
+
+&lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkMatrix 2 3 0&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; # a 2X3 matrix, with elements as zeros
+set mat2 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkMatrix 4 4 1&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; # a 4X4 Square matrix, with elements as ones
+
+set vec1 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkVector 5 0&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; 
+
+puts $mat1
+puts $mat2
+
+puts $vec1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;example-2---getting-size-number-of-rows-and-columns&quot;&gt;&lt;em&gt;Example 2&lt;/em&gt; - Getting size (number of rows and columns)&lt;/h4&gt;
+
+&lt;p&gt;To iterate through various indices of a matrix, it is essential to know the number of rows and columns upfront. &lt;em&gt;tcllib&lt;/em&gt; does not have special functions for
+this purpose. However, since each row of a matrix is a &lt;em&gt;list&lt;/em&gt; and number of elements in each row
+is equal to the number of columns, we can use functions of &lt;em&gt;lists&lt;/em&gt; (such as &lt;code class=&quot;highlighter-rouge&quot;&gt;llength&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;lindex&lt;/code&gt;) for this purpose,&lt;/p&gt;
+
+&lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkMatrix 2 3 0&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; # a 2X3 matrix, with elements as zeros
+
+puts &lt;span class=&quot;s2&quot;&gt;&quot;no. of rows in mat1 = &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;llength $mat1&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+puts &lt;span class=&quot;s2&quot;&gt;&quot;no. of columns in mat1 = &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr &lt;span class=&quot;p&quot;&gt;{[&lt;/span&gt;llength &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;lindex $mat1 0&lt;span class=&quot;p&quot;&gt;]]}]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;example-3---getting-and-setting-elements-in-a-matrix&quot;&gt;&lt;em&gt;Example 3&lt;/em&gt; - Getting and Setting elements in a matrix&lt;/h4&gt;
+
+&lt;p&gt;To set and get elements in a matrix, &lt;em&gt;Tcllib&lt;/em&gt; provides, two special functions &lt;code class=&quot;highlighter-rouge&quot;&gt;getelem matrix row col&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;setelem matrix row ?col? newvalue&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;newvalue&lt;/code&gt; can be a number or string.
+However, matrix operations such as inverse, determinant, addition, substraction, etc can be performed only on numbers&lt;/p&gt;
+
+&lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkMatrix 2 3 0&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; # a 2X3 matrix, with elements as zeros
+
+puts $mat1
+
+for &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; set i 0 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; $i &amp;lt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;llength $mat1&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; incr i &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    for &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; set j 0 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; $j &amp;lt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr &lt;span class=&quot;p&quot;&gt;{[&lt;/span&gt;llength &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;lindex $mat1 0&lt;span class=&quot;p&quot;&gt;]]}]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; incr j &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        mm::setelem mat1 $i $j &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr rand&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+puts $mat1
+puts &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::getelem $mat1 1 1&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;example-4---addition-substraction-multiplication-determinant-and-inverse&quot;&gt;&lt;em&gt;Example 4&lt;/em&gt; - Addition, Substraction, Multiplication, Determinant and Inverse&lt;/h4&gt;
+
+&lt;p&gt;Addition, Substraction, Multiplication and Determinant have straight forward procs for evaluation in &lt;em&gt;tcllib&lt;/em&gt;. However, there are
+several functions (such as Gauss, PGauss, Triangular etc.) for evaluating inverse&lt;/p&gt;
+
+&lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkMatrix 5 5 0&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; # a 4X4 matrix, with elements as zeros
+set mat2 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkMatrix 5 5 0&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; # a 4X4 matrix, with elements as zeros
+
+for &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; set i 0 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; $i &amp;lt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;llength $mat1&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; incr i &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    for &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; set j 0 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; $j &amp;lt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr &lt;span class=&quot;p&quot;&gt;{[&lt;/span&gt;llength &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;lindex $mat1 0&lt;span class=&quot;p&quot;&gt;]]}]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; incr j &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        mm::setelem mat1 $i $j &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr rand&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+        mm::setelem mat2 $i $j &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr rand&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+puts $mat1
+puts $mat2
+
+&lt;span class=&quot;c1&quot;&gt;# Addition, Substraction, Multiplication and Determinant&lt;/span&gt;
+
+set sum_mats &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::add_mat $mat1 $mat2&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+set diff_mats &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::sub_mat $mat1 $mat2&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+set Multip_mats &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::matmul $mat1 $mat2&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+set det_mat2 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::det $mat2&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Inverse&lt;/span&gt;
+
+set matID &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::mkIdentity &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;llength $mat2&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+set mat2_inv &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::solvePGauss  $mat2 $matID&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+puts &lt;span class=&quot;s2&quot;&gt;&quot;Check Inverse = &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;mm::matmul $mat2_inv $mat2&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More examples will be added soon…&lt;/p&gt;
+
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-24&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Tcl" /><category term="Tcllib" /><category term="Standard Tcl Library" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">This post in the Tcl Master Series is dedicated to discuss various packages available in the Standard Tcl Library (Tcllib). The emphasis is particularly laid upon the packages related to mathamatical operations.</summary></entry><entry><title type="html">Standard Tcl Library (Tcllib) - Installation - Tcl Master Series</title><link href="https://vijaypolimeru.github.io/tcllib-installation-learn-tcl-programming-from-scratch/" rel="alternate" type="text/html" title="Standard Tcl Library (Tcllib) - Installation - Tcl Master Series" /><published>2020-03-25T00:00:00+05:30</published><updated>2020-03-25T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/tcllib-installation-tcl-master-series</id><content type="html" xml:base="https://vijaypolimeru.github.io/tcllib-installation-learn-tcl-programming-from-scratch/">&lt;p&gt;This post in the &lt;a href=&quot;/Learn-Tcl-Programming-from-Scratch/&quot;&gt;Tcl Master Series&lt;/a&gt; is dedicated to discuss various packages 
+available in the &lt;strong&gt;&lt;em&gt;Standard Tcl Library (Tcllib)&lt;/em&gt;&lt;/strong&gt;. The emphasis is particularly laid upon
+the packages related to mathamatical operations.&lt;/p&gt;
+
+&lt;h4 id=&quot;download&quot;&gt;&lt;strong&gt;Download&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;The latest version of standard Tcl library (Tcllib) can be downloaded from &lt;a href=&quot;http://www.tcl.tk/software/tcllib/&quot;&gt;here&lt;/a&gt;. 
+The examples pertaining to Tcllib presented hereafter are written using Tcllib 1.20, since it is the latest version when I am writing this post. which can be
+downloaded from &lt;a href=&quot;https://forms.gle/Y6fcxHmognsrHS4m7&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The detailed documentation of &lt;strong&gt;&lt;em&gt;Tcllib&lt;/em&gt;&lt;/strong&gt; can be found &lt;a href=&quot;https://core.tcl-lang.org/tcllib/doc/tcllib-1-20/embedded/md/toc.md&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;installation&quot;&gt;&lt;strong&gt;Installation&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Following are the steps involved in the installation of Tcllib,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Unzip the &lt;code class=&quot;highlighter-rouge&quot;&gt;tcllib-1.20.zip&lt;/code&gt; file (or the latest version)&lt;/li&gt;
+  &lt;li&gt;Add the path &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Tcl\bin&lt;/code&gt; (or the path of &lt;code class=&quot;highlighter-rouge&quot;&gt;yourpath\Tcl\bin&lt;/code&gt; where ever you have installed &lt;code class=&quot;highlighter-rouge&quot;&gt;Tcl&lt;/code&gt;) 
+to the &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; variable. (Normally, when installing the Tcl 
+this path automatically added to windows &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; variable, if not please add this now).&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh&lt;/code&gt; in the command prompt which is opened from the unzipped &lt;em&gt;tcllib-1.20&lt;/em&gt; folder. (just navigate to the folder &lt;em&gt;tcllib-1.20&lt;/em&gt;, 
+highlight the complete folder path in the top pane and type “cmd”).&lt;/li&gt;
+  &lt;li&gt;Then type &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh installer.tcl&lt;/code&gt; and wait for some time, till the installation is over.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;example&quot;&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;To check whether the installation is succesfull or not, download the Tcl file (&lt;a href=&quot;https://forms.gle/Y6fcxHmognsrHS4m7&quot;&gt;download link&lt;/a&gt;) and run the &lt;code class=&quot;highlighter-rouge&quot;&gt;stdlib-test.tcl&lt;/code&gt;
+file from Komodo IDE. If you can get an image something similar to the one shown as below, then the &lt;strong&gt;&lt;em&gt;installation is successfull&lt;/em&gt;&lt;/strong&gt;. 
+Since the &lt;code class=&quot;highlighter-rouge&quot;&gt;rand()&lt;/code&gt; is used to generate the data, you may not get an exact image like the one shown below, you will get something similar to this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tcl-master-series/tcllib-test-success.png&quot; class=&quot;align-center&quot; alt=&quot;&quot; width=&quot;250&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details (if require) will be added soon…&lt;/p&gt;
+
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-22&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Tcl" /><category term="Tcllib" /><category term="Standard Tcl Library" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">This post in the Tcl Master Series is dedicated to discuss various packages available in the Standard Tcl Library (Tcllib). The emphasis is particularly laid upon the packages related to mathamatical operations.</summary></entry><entry><title type="html">Dictionary - Tcl Master Series</title><link href="https://vijaypolimeru.github.io/dict-learn-tcl-programming-from-scratch/" rel="alternate" type="text/html" title="Dictionary - Tcl Master Series" /><published>2020-03-22T00:00:00+05:30</published><updated>2020-03-22T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/dict-tcl-master-series</id><content type="html" xml:base="https://vijaypolimeru.github.io/dict-learn-tcl-programming-from-scratch/">&lt;p&gt;This post in the &lt;a href=&quot;/Learn-Tcl-Programming-from-Scratch/&quot;&gt;Tcl Master Series&lt;/a&gt; is dedicated to discuss various operations on &lt;strong&gt;&lt;em&gt;Dictionaries&lt;/em&gt;&lt;/strong&gt; in Tcl.&lt;/p&gt;
+
+&lt;p&gt;A Dictionary is an collection of &lt;em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;key-value&lt;/code&gt;&lt;/em&gt; pairs. A &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt; can be an integer or double or array or a list or it can be another dictionary and &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; is
+simply a &lt;em&gt;name&lt;/em&gt; or &lt;em&gt;id&lt;/em&gt; which we assign for each value.&lt;/p&gt;
+
+&lt;h4 id=&quot;creating-a-dict&quot;&gt;&lt;strong&gt;Creating a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Method 1&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set dictname [dict create key1 value1 key2 value2 ....]&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; set algorithms [dict create algo1 Newton algo2 KrylovNewton algo3 Broyden]
+ puts $algorithms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Method 2&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dict set dictname key value&lt;/code&gt; - for creating single key value pair. This is primariliy used for changing a &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt; in a dictionary created using
+ Method 1.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; dict set algorithms algo1 Newton
+ puts $algorithms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;getting-a-value-in-a-dict&quot;&gt;&lt;strong&gt;Getting a value in a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Every &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt; in a dictionary is paired with a &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt;, which means without a &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; we cannot 
+retrive a &lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt; from a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt;. The syntax is, &lt;code class=&quot;highlighter-rouge&quot;&gt;[dict get $dictname key]&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set algorithms [dict create algo1 Newton algo2 KrylovNewton]
+
+set algo [dict get $algorithms algo1];
+puts $algo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;getting-all-keys-and-all-values-in-a-dict&quot;&gt;&lt;strong&gt;Getting all &lt;code class=&quot;highlighter-rouge&quot;&gt;keys&lt;/code&gt; and all &lt;code class=&quot;highlighter-rouge&quot;&gt;values&lt;/code&gt; in a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;The syntax to get all keys in a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;[dict keys $dictname]&lt;/code&gt;. This returns all the &lt;code class=&quot;highlighter-rouge&quot;&gt;keys&lt;/code&gt; in the form of list.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set algorithms [dict create algo1 Newton algo2 KrylovNewton]
+
+set allkeys [dict keys $algorithms];
+puts $allkeys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;in the same way we can get all &lt;code class=&quot;highlighter-rouge&quot;&gt;values&lt;/code&gt; in a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt; in the form of a list using &lt;code class=&quot;highlighter-rouge&quot;&gt;[dict values $dictname]&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set algorithms [dict create algo1 Newton algo2 KrylovNewton]
+
+set allvalues [dict values $algorithms];
+puts $allvalues
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;iteration-through-a-dict&quot;&gt;&lt;strong&gt;Iteration through a &lt;code class=&quot;highlighter-rouge&quot;&gt;dict&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loop&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set algorithms [dict create algo1 Newton algo2 KrylovNewton algo3 Broyden algo4 BFGS algo5 etc.]
+set allkeys [dict keys $algorithms]
+
+for {set i 0} {$i &amp;lt; [llength $allkeys]} {incr i 1} {
+    puts &quot;The Value of key [lindex $allkeys $i] is [dict get $algorithms [lindex $allkeys $i]]&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;foreach&lt;/code&gt; loop&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set algorithms [dict create algo1 Newton algo2 KrylovNewton algo3 Broyden algo4 BFGS algo5 etc.]
+set allkeys [dict keys $algorithms]
+
+foreach key_id [dict keys $algorithms] {
+   puts &quot;The Value of key $key_id is [dict get $algorithms $key_id]&quot; 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details (if require) will be added soon…&lt;/p&gt;
+
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-22&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Tcl" /><category term="Dict" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">This post in the Tcl Master Series is dedicated to discuss various operations on Dictionaries in Tcl.</summary></entry><entry><title type="html">Introduction to Nonlinear Finite Element Analysis</title><link href="https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html" rel="alternate" type="text/html" title="Introduction to Nonlinear Finite Element Analysis" /><published>2020-03-15T00:00:00+05:30</published><updated>2020-03-15T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline</id><content type="html" xml:base="https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html">&lt;p&gt;Finite Element Analysis (FEA) is one of the several methods avaibale to solve differential equations that describe many engineering problems. This method is
+formally introduced to the engineering students at under-graduate level to solve material and geometrically linear problems. An advanced version of 
+this subject called Nonlinear Finite Element Analysis (NLFEA) is often introduced in the curriculum for post-graduate students. Most of the time it left
+as a subject for self-study. For researchers who are working in the field of computational mechanics, a thorough understanding on this subject is very
+essential.&lt;/p&gt;
+
+&lt;p&gt;In this series of posts on Nonlinear Finite Element Analysis, I will try to cover different topics involved in NLFEA. As a starting point, I have taken 
+the following outline of contents from the &lt;a href=&quot;https://www.researchgate.net/publication/269411458_Nonlinear_Finite_Element_Analysis_Notes&quot;&gt;Lecture Notes&lt;/a&gt; 
+written by &lt;a href=&quot;https://www.researchgate.net/profile/Ioannis_Koutromanos&quot;&gt;Prof. Ioannis Koutromanos&lt;/a&gt;, because the contents are almost exhaustive and they will serve
+as a good signposts to learn NLFEA. However, the content provided in respective posts is purely my understanding on the subject and also depending on the topic, 
+I will introduce new contents along with more examples and MATLAB/Python codes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Table of Contents&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Nonlinear Finite Element Analysis–A Point of Departure
+    &lt;ol&gt;
+      &lt;li&gt;Revisiting the concept of linear elasticity&lt;/li&gt;
+      &lt;li&gt;Introduction to Nonlinear material behavior&lt;/li&gt;
+      &lt;li&gt;Interlude: Description of Elastic behavior – Generic Description of Elastoplastic Materials&lt;/li&gt;
+      &lt;li&gt;Numerical Description of Nonlinear stress-strain laws – The discrete approach
+        &lt;ol&gt;
+          &lt;li&gt;Example of a stress-strain law and of algorithmic implementation: Uniaxial elastic-hardening material with linear isotropic hardening&lt;/li&gt;
+          &lt;li&gt;Kinematic Hardening&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Stress-Strain models in total form&lt;/li&gt;
+      &lt;li&gt;Tangent slope of stress-strain diagram&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Introduction to Nonlinear Analysis of Trusses and Beams
+    &lt;ol&gt;
+      &lt;li&gt;Nonlinear Analysis of Truss Structures&lt;/li&gt;
+      &lt;li&gt;Nonlinear Analysis of Beam Structures&lt;/li&gt;
+      &lt;li&gt;Generalized stress – generalized strain relation for Nonlinear Euler-Bernoulli beams based on uniaxial material laws – The layer (fiber) section model.&lt;/li&gt;
+      &lt;li&gt;Solution of nonlinear equations – The iterative Approach
+        &lt;ol&gt;
+          &lt;li&gt;Example 2.1: Iterative solution of scalar nonlinear equation&lt;/li&gt;
+          &lt;li&gt;Example 2.2: Iterative solution of system of nonlinear equations&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Application of Iterative Solution Procedure to Nonlinear Structural Analysis
+        &lt;ol&gt;
+          &lt;li&gt;Discussion-Convergence behavior of Newton-Raphson method&lt;/li&gt;
+          &lt;li&gt;Tangent stiffness matrix for truss elements&lt;/li&gt;
+          &lt;li&gt;Tangent stiffness matrix for beam elements (in the local coordinate system)&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Types of Newton-Raphson Iterative Methods&lt;/li&gt;
+      &lt;li&gt;Incremental – Iterative Procedure for Nonlinear problems-Load control and displacement control – proportional loading.
+        &lt;ol&gt;
+          &lt;li&gt;Example 2.3: Solution of nonlinear structure&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Interlude 1: Some necessary introduction – The BASIC system of a beam and the basic displacements/rotations.&lt;/li&gt;
+      &lt;li&gt;Interlude 2: Force-based (flexibility-based) beam elements
+        &lt;ol&gt;
+          &lt;li&gt;Weak form of Compatibility Equations – Principle of Virtual Forces&lt;/li&gt;
+          &lt;li&gt;Force interpolation – Force-based elements&lt;/li&gt;
+          &lt;li&gt;Nonlinear Force-Based Elements&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Accounting for Geometric Nonlinearities in Structural Analysis – The corotational formulation&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Finite Elements for Small-Strain Inelastic Solid Mechancis
+    &lt;ol&gt;
+      &lt;li&gt;Introduction – Basic Definitions&lt;/li&gt;
+      &lt;li&gt;Governing equations in solid mechanics – The conservation (balance) laws
+        &lt;ol&gt;
+          &lt;li&gt;Conservation of mass for small-strain problems&lt;/li&gt;
+          &lt;li&gt;Conservation of linear momentum for small-strain problems&lt;/li&gt;
+          &lt;li&gt;Strong form of Conservation of Linear Momentum (equation of motion)&lt;/li&gt;
+          &lt;li&gt;Conservation of angular momentum&lt;/li&gt;
+          &lt;li&gt;Conservation of energy (1st law of thermodynamics)&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Weak form for 3D equations of motion&lt;/li&gt;
+      &lt;li&gt;Piecewise Finite Element Approximation – Assembly Equations
+        &lt;ol&gt;
+          &lt;li&gt;Partition to unrestrained and restrained degrees of freedom&lt;/li&gt;
+          &lt;li&gt;Accounting for the effect of viscous damping forces&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Solution for General, Time-dependent solid mechanics problems
+        &lt;ol&gt;
+          &lt;li&gt;Newmark Method for Step-by-step solution of equations of motion&lt;/li&gt;
+          &lt;li&gt;Explicit Central Difference Method for equations of motion&lt;/li&gt;
+          &lt;li&gt;Example 3.1: Explicit Central Difference Update&lt;/li&gt;
+          &lt;li&gt;Example 3.2: Use of Explicit Analysis for Static Loading&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Elastoplasticity and Numerical Implementation
+    &lt;ol&gt;
+      &lt;li&gt;Introduction – Basic Definitions&lt;/li&gt;
+      &lt;li&gt;The yield condition for multiaxial elastoplasticity – Yield criteria&lt;/li&gt;
+      &lt;li&gt;The flow rule for elastoplasticity – Plastic Potential Function – Associative and Non-Associative flow rules
+        &lt;ol&gt;
+          &lt;li&gt;Example 4.1: Isochoric Plastic flow for von Mises criterion&lt;/li&gt;
+          &lt;li&gt;Example 4.2: Effective plastic strain and plastic multiplier&lt;/li&gt;
+          &lt;li&gt;Example 4.3: Plastic flow for uniaxial stress&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Perfect Plasticity and Hardening&lt;/li&gt;
+      &lt;li&gt;The consistency condition – Elastoplastic Material Tangent Stiffness Matrix
+        &lt;ol&gt;
+          &lt;li&gt;Example 4.4: Calculations for non-associative flow rule in elastoplastic material&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Numerical Stress Update procedure
+        &lt;ol&gt;
+          &lt;li&gt;The Radial Return Algorithm for J2 plasticity&lt;/li&gt;
+          &lt;li&gt;Generalized Cutting Plane Algorithm&lt;/li&gt;
+          &lt;li&gt;Algorithmic Tangent Moduli&lt;/li&gt;
+          &lt;li&gt;Example 4.5: Calculations for von Mises model with mixed linear hardening.&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Large Deformation Solid Mechanics
+    &lt;ol&gt;
+      &lt;li&gt;Introduction – Reference/Current Configuration – The Motion Mapping&lt;/li&gt;
+      &lt;li&gt;Material and Spatial Descriptions – The material time derivative
+        &lt;ol&gt;
+          &lt;li&gt;Example 5.1: Description using material and spatial coordinates&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;The deformation gradient of the motion and the polar decomposition theorem&lt;/li&gt;
+      &lt;li&gt;Deformation Measures in the Current and in the Reference Configuration
+        &lt;ol&gt;
+          &lt;li&gt;Example 5.2: Large deformation kinematics&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Stress Measures in the Current and in the Reference Configuration&lt;/li&gt;
+      &lt;li&gt;The Need for Objective Stress Rates&lt;/li&gt;
+      &lt;li&gt;Governing Equations with Respect to Reference Configuration – Total Lagrangian Formulation&lt;/li&gt;
+      &lt;li&gt;Governing Equations with Respect to CURRENT Configuration&lt;/li&gt;
+      &lt;li&gt;A “trick” to use the current configuration without convective terms: The updated Lagrangian formulation.&lt;/li&gt;
+      &lt;li&gt;Weak form for total Lagrangian formulation: Principle of Virtual Work&lt;/li&gt;
+      &lt;li&gt;Weak form for Updated Lagrangian formulation: Principle of Virtual Power&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Finite Element Solution For Large-Deformation Problems
+    &lt;ol&gt;
+      &lt;li&gt;Introduction&lt;/li&gt;
+      &lt;li&gt;Finite Element Equations for Total Lagrangian Formulation&lt;/li&gt;
+      &lt;li&gt;Finite Element Equations for Updated Lagrangian Formulation&lt;/li&gt;
+      &lt;li&gt;Concluding Remarks on Updated Lagrangian formulation&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Further Iterative Solution Strategies
+    &lt;ol&gt;
+      &lt;li&gt;Introduction&lt;/li&gt;
+      &lt;li&gt;Alternative Convergence Criteria for Iterative Solutions&lt;/li&gt;
+      &lt;li&gt;Alternative Iterative Strategies – Quasi-Newton Methods
+        &lt;ol&gt;
+          &lt;li&gt;Quasi-Newton method using rank-1 update – The Broyden method&lt;/li&gt;
+          &lt;li&gt;Quasi-Newton method using rank-2 update – The BFGS method&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Increasing the efficiency and robustness of iterative procedures
+        &lt;ol&gt;
+          &lt;li&gt;Subincrementation&lt;/li&gt;
+          &lt;li&gt;Using Line-search in iterative procedures&lt;/li&gt;
+          &lt;li&gt;Further Note: efficient use of Newton-Raphson iteration&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Vector-Tensor Calculus
+    &lt;ol&gt;
+      &lt;li&gt;Introduction – Scalar and Tensor quantities - Vectors&lt;/li&gt;
+      &lt;li&gt;Definition of Stress tensor – Second-order tensors&lt;/li&gt;
+      &lt;li&gt;Coordinate Transformation Rules for Vectors&lt;/li&gt;
+      &lt;li&gt;Summation Convention
+        &lt;ol&gt;
+          &lt;li&gt;Example 8.1: Summation Convention&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Coordinate transformation law for 2nd order tensors&lt;/li&gt;
+      &lt;li&gt;Tensor Invariants&lt;/li&gt;
+      &lt;li&gt;Volumetric and deviatoric parts of stress and strain&lt;/li&gt;
+      &lt;li&gt;Principal Values and Principal Directions of a Tensor&lt;/li&gt;
+      &lt;li&gt;The principal stress-space representation&lt;/li&gt;
+      &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;-plane and Haigh-Westergaard coordinates&lt;/li&gt;
+      &lt;li&gt;Derivatives of Invariants, deviatoric invariants and Haigh-Westergaard coordinates with stress components
+        &lt;ol&gt;
+          &lt;li&gt;Example 8.2: Calculations with three-dimensional tensors&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Principal Values and Principal Directions of a Tensor&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Standalone Program for Nonlinear Analysis
+    &lt;ol&gt;
+      &lt;li&gt;Program Description&lt;/li&gt;
+      &lt;li&gt;Program Source Code&lt;/li&gt;
+      &lt;li&gt;Sample Input File&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-10&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Introduction" /><category term="nlfea" /><summary type="html">Finite Element Analysis (FEA) is one of the several methods avaibale to solve differential equations that describe many engineering problems. This method is formally introduced to the engineering students at under-graduate level to solve material and geometrically linear problems. An advanced version of this subject called Nonlinear Finite Element Analysis (NLFEA) is often introduced in the curriculum for post-graduate students. Most of the time it left as a subject for self-study. For researchers who are working in the field of computational mechanics, a thorough understanding on this subject is very essential.</summary></entry><entry><title type="html">Start your first website using MkDocs</title><link href="https://vijaypolimeru.github.io/start-your-first-website/" rel="alternate" type="text/html" title="Start your first website using MkDocs" /><published>2020-03-08T00:00:00+05:30</published><updated>2020-03-08T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/mkdocs-start-your-first-website</id><content type="html" xml:base="https://vijaypolimeru.github.io/start-your-first-website/">&lt;p&gt;No matter what profession you are in, having a website helps you in multiple ways. With the inception of &lt;a href=&quot;https://wiki.tcl-lang.org/page/Static+site+generator&quot;&gt;&lt;strong&gt;&lt;em&gt;static site generators (SSG)&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;,
+the process of building a website became very easy and free.&lt;/p&gt;
+
+&lt;p&gt;In this post, I have provided step-by-step information to create your first website using
+a python based &lt;em&gt;SSG&lt;/em&gt; called &lt;a href=&quot;https://www.mkdocs.org/&quot;&gt;MkDocs&lt;/a&gt;. 
+Using MkDocs you can build awesome websites (or project documentations) in a matter of seconds and can host it on &lt;a href=&quot;https://pages.github.com/&quot;&gt;gh-pages&lt;/a&gt; for free. 
+Along with MkDocs, there exists 460 other SSGs availble at your disposal. You can find a
+defnitive list of all available SSGs &lt;a href=&quot;https://staticsitegenerators.net/&quot;&gt;here&lt;/a&gt;. I the upcoming posts, I will try to cover as many as I can.&lt;/p&gt;
+
+&lt;p&gt;With that said, Lets start installing prerequisites and build our first website using MkDocs.&lt;/p&gt;
+
+&lt;p&gt;MkDocs installation involves three stpes&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Installing &lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Installing &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; and&lt;/li&gt;
+  &lt;li&gt;Installing &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs&lt;/code&gt; and associated themes via &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once you finished these three steps, you are ready to go launch your first website.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-python&quot;&gt;Installing &lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;To install &lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt; download &lt;a href=&quot;https://www.anaconda.com/distribution/#download-section&quot;&gt;Anaconda Python&lt;/a&gt; or simply download &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-pip&quot;&gt;Installing &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;To install &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; on Linux or MacOS machines, please type &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install -U pip&lt;/code&gt; on Windows Machines please type &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m pip install -U pip&lt;/code&gt; in the command prompt. 
+For more information, please refer to &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; documentaion &lt;a href=&quot;https://pip.readthedocs.io/en/stable/installing/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you are done with steps 1 and 2, please check the version numbers of &lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; to confirm that installation is succefull.&lt;/p&gt;
+
+&lt;p&gt;On Linux/MacOS Machines&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ python --version
+Python 3.7.2
+$ pip --version
+pip 19.3.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On Windows Machines&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;python --version
+Python 3.7.2
+&amp;gt;python -m pip --version
+pip 19.3.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;installing-mkdocs-and-associated-themes-via-pip&quot;&gt;Installing &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs&lt;/code&gt; and associated themes via &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;To install &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs&lt;/code&gt; please enter the commands &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install mkdocs&lt;/code&gt; on Linux/MacOS Machines or &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m pip install mkdocs&lt;/code&gt; on Windows Machines. To confirm that installation is successfull, please type&lt;/p&gt;
+
+&lt;p&gt;On Linux/MacOS Machines&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdocs --version
+mkdocs, version 1.0.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On Windows Machines&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;python -m mkdocs --version
+__main__.py, version 1.0.4 from C:Users\blah\blah\Python\Python37\site-packages\mkdocs (Python 3.7)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Congragulations, installation is succesfull…&lt;/em&gt;&lt;/strong&gt;, Now please follow the instructions to generate your first website and make it live using &lt;a href=&quot;https://pages.github.com/&quot;&gt;gh-pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Launching mkdocs website on &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; invloves three stpes&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Creating a &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; repository&lt;/li&gt;
+  &lt;li&gt;Creating &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs&lt;/code&gt; website in the local repository&lt;/li&gt;
+  &lt;li&gt;Building and deploying the site to &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once you finished these three steps, your site is online.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-git-repository&quot;&gt;Creating a &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; repository&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs&lt;/code&gt; offers inbuilt support to deploy the website on &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;, provided by GitHub. Hence for that to happen you need to create a repository on GitHub and Pull it to your computer. 
+To create a repository on GitHub, please follow the instructions posted &lt;a href=&quot;https://vijaypolimeru.github.io/Something_Abt_Everything/Misc/Git_Rel/#creating-a-git-repo-from-command-line-and-push-to-github&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you are working on windows/mac, you can use GitHub Desktop application to create your repository from GitHub Desktop itself. On Linux machines using &lt;code class=&quot;highlighter-rouge&quot;&gt;Kernel&lt;/code&gt; is the easiest way.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-mkdocs-website-in-the-local-repository&quot;&gt;Creating &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs&lt;/code&gt; website in the local repository&lt;/h2&gt;
+
+&lt;p&gt;Once &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; repository is created, type the command &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m mkdocs new [dir-name]&lt;/code&gt;, this will create a folder with name as &lt;code class=&quot;highlighter-rouge&quot;&gt;dir-name&lt;/code&gt; with in the folder 
+you see a subfolder called &lt;code class=&quot;highlighter-rouge&quot;&gt;docs&lt;/code&gt; and a file named &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdocs.yml&lt;/code&gt;. To see the live website while developing it type the commnad &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m mkdocs serve&lt;/code&gt; on command 
+prompt and type the link which appears on command prompt, which probaly looks like this &lt;code class=&quot;highlighter-rouge&quot;&gt;http://127.0.0.1:8000&lt;/code&gt; copy it and paste it in your browser. You will see a site like this&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ssg/firstsite.PNG&quot; alt=&quot;like this&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;building-and-deploying-the-site-to-gh-pages&quot;&gt;Building and deploying the site to &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Once the site is developed, type &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m mkdocs build&lt;/code&gt; follwed by &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m mkdocs gh-deploy&lt;/code&gt;. Your site will shortly appear on &lt;code class=&quot;highlighter-rouge&quot;&gt;https://username.github.io/repository-name/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In the subsequent posts, we will discuss in detail about basic concepts like &lt;em&gt;styling your pages, modifying yml file, adding plugins etc.&lt;/em&gt; and advanced cocepts like &lt;em&gt;enhancing the theme, developing your own themes etc.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-09&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="mkdocs" /><category term="static site generator" /><category term="python" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">No matter what profession you are in, having a website helps you in multiple ways. With the inception of static site generators (SSG), the process of building a website became very easy and free.</summary></entry><entry><title type="html">Top 5 running and jogging tracks in IIT-Bombay</title><link href="https://vijaypolimeru.github.io/running-tracks-iit-bombay/" rel="alternate" type="text/html" title="Top 5 running and jogging tracks in IIT-Bombay" /><published>2020-03-04T00:00:00+05:30</published><updated>2020-03-04T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/running-tracks-iitb</id><content type="html" xml:base="https://vijaypolimeru.github.io/running-tracks-iit-bombay/">&lt;blockquote&gt;
+  &lt;p&gt;Running is the greatest metaphor for life, because you get out of it what you put into it&lt;/p&gt;
+
+  &lt;p&gt;&lt;cite&gt;&lt;a href=&quot;https://www.goodreads.com/quotes/49401-running-is-the-greatest-metaphor-for-life-because-you-get&quot;&gt;Oprah Winfrey &lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this post, I have covered some of the best tracks for running/jogging at IIT Bombay. The distance of tracks ranges from, as short as 0.4 Km (3 mins approx) to 6.0 Km (30 min approx).
+Choose the path depending on your time goals.&lt;/p&gt;
+
+&lt;p&gt;The total distance shown in the figures is measured using google maps, 
+I guess slopes are excluded in GMaps, hence there might be &lt;script type=&quot;math/tex&quot;&gt;\pm 10\%&lt;/script&gt; error (approximately).&lt;/p&gt;
+
+&lt;p&gt;Track 1&lt;/p&gt;
+
+&lt;p&gt;I guess, this track does not need an introdcution. This is the running/jogging track in IITB-Gymkhana grounds.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://vijaypolimeru.github.io/images/fitness/route-1.png&quot; alt=&quot;route-1&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Track 2&lt;/p&gt;
+
+&lt;p&gt;This route starts from Hostel 12/13/14 bus stop to Main gate (via Main road), without any major turns.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://vijaypolimeru.github.io/images/fitness/route-2.png&quot; alt=&quot;route-1&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Track 3&lt;/p&gt;
+
+&lt;p&gt;This route starts from Hostel 12/13/14 bus stop to the tree before Padmavati temple, (via lake side road).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://vijaypolimeru.github.io/images/fitness/route-3.png&quot; alt=&quot;route-1&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Track 4&lt;/p&gt;
+
+&lt;p&gt;This track is the road surrounding gymkhana grounds.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://vijaypolimeru.github.io/images/fitness/route-4.png&quot; alt=&quot;route-1&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Track 5&lt;/p&gt;
+
+&lt;p&gt;This track is preferable for long distance running. This one starts
+at the T-Junction near campus hub –&amp;gt; tree before padmavati temple (via lake side road) –&amp;gt; Directors Bungalow –&amp;gt; H10 –&amp;gt; Main gate –&amp;gt; YP gate –&amp;gt; CSRE Building
+–&amp;gt; QIP Quarters –&amp;gt; Hostel 15 –&amp;gt; Old SAC –&amp;gt; and ends at T-Junction near campus hub&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://vijaypolimeru.github.io/images/fitness/route-5.png&quot; alt=&quot;route-1&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;
+
+&lt;p&gt;Last Updated: 2020-03-10&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="IIT Bombay" /><category term="runing tracks" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">Running is the greatest metaphor for life, because you get out of it what you put into it Oprah Winfrey</summary></entry><entry><title type="html">Setting up IDE for Tcl Practice</title><link href="https://vijaypolimeru.github.io/ide-setup-tcl-programming-from-scratch/" rel="alternate" type="text/html" title="Setting up IDE for Tcl Practice" /><published>2020-02-20T00:00:00+05:30</published><updated>2020-02-20T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/tcl-ide-install</id><content type="html" xml:base="https://vijaypolimeru.github.io/ide-setup-tcl-programming-from-scratch/">&lt;p&gt;This post in the &lt;a href=&quot;/Learn-Tcl-Programming-from-Scratch/&quot;&gt;Tcl Master Series&lt;/a&gt; is dedicated to setup various online and offline IDE(s) for practicing Tcl.&lt;/p&gt;
+
+&lt;h1 id=&quot;komodo&quot;&gt;Komodo&lt;/h1&gt;
+
+&lt;p&gt;In this series we primarily use &lt;strong&gt;&lt;em&gt;Komodo&lt;/em&gt;&lt;/strong&gt; as our IDE for practice. Komodo is an opensource project (&lt;a href=&quot;https://www.dropbox.com/s/oszg3ozq3lpk6o5/Tcl_komodo_free.PNG?dl=0&quot;&gt;free&lt;/a&gt;) from &lt;em&gt;Active-State&lt;/em&gt;, along with Tcl it supports several other languages. However,
+we use this for Tcl only in this course. The Latest version &lt;a href=&quot;https://www.activestate.com/products/komodo-ide/download-ide/&quot;&gt;Komodo-v12.0.1&lt;/a&gt; is throwing some &lt;a href=&quot;https://www.dropbox.com/s/3t61lpbf3leif3h/Tcl_komodo_12_error.PNG?dl=0&quot;&gt;strange bug&lt;/a&gt; in windows 7, which makes
+it unable to use. Hence will be using &lt;strong&gt;Komodo-v11&lt;/strong&gt; for this course, which can be downloaded from &lt;a href=&quot;https://forms.gle/Y6fcxHmognsrHS4m7&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Installation of &lt;strong&gt;Komodo-v11&lt;/strong&gt; is straight forward, no complex steps involved in the process (list of steps provided below). However, you may need to register when you open the IDE for the first time, hence 
+register yourself &lt;a href=&quot;https://platform.activestate.com/create-account?utm_campaign=create-account&amp;amp;utm_medium=website&amp;amp;utm_source=activestate.com&amp;amp;utm_term=create-account&amp;amp;utm_content=top-bar-menu&quot;&gt;here&lt;/a&gt;
+and keep your user-id and password in hand.&lt;/p&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Download and install latest version of Tcl from &lt;a href=&quot;https://www.activestate.com/products/tcl/downloads/&quot;&gt;here&lt;/a&gt;, this may work as expected. However, in the present 
+series we will be using Tcl. 8.5 (64 Bit) version, which you can download from &lt;a href=&quot;https://forms.gle/Y6fcxHmognsrHS4m7&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Double click on the ‘Komodo-IDE-11.1.1-91089.msi’ and follow the regular steps (&lt;em&gt;next–&amp;gt;next–&amp;gt; etc&lt;/em&gt;). After succesful installation, first look will be like this.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/komodo_firstlook.png&quot; class=&quot;align-center&quot; alt=&quot;&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To test, whether the IDE is working properly or not. Create a file and paste the following code in it&lt;/p&gt;
+
+&lt;div class=&quot;language-tcl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set a 1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+set b 2&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+set c &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;expr $a + $b&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+puts &lt;span class=&quot;s2&quot;&gt;&quot;Hello World, the sum of a and b is &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$c&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and the &lt;strong&gt;&lt;em&gt;run&lt;/em&gt;&lt;/strong&gt; button in the top menus, you will be prompted following pop-up, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;use default tclsh interpreter (for console applications)&lt;/code&gt; and press ok&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/komodo_config.png&quot; class=&quot;align-center&quot; alt=&quot;&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;you will see the following output in the output window.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/komodo_output.png&quot; class=&quot;align-center&quot; alt=&quot;&quot; width=&quot;450&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thats simple it is. If you face any difficulties while installation, first refer &lt;a href=&quot;https://community.komodoide.com/&quot;&gt;here&lt;/a&gt; for potential solution. If you did not
+found any solution, please comment in the comment section, I will try to resolve the issue.&lt;/p&gt;
+
+&lt;h1 id=&quot;tcl-inbuilt-executable-tclshexe&quot;&gt;Tcl Inbuilt executable &lt;strong&gt;&lt;em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh.exe&lt;/code&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;Tcl has an inbuilt compiler called &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh.exe&lt;/code&gt;, it will be in &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\yourpath\Tcl\bin&lt;/code&gt; folder. It also has another executable &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh85.exe&lt;/code&gt; (since we installed Tcl8.5), you can use either one and just follow the steps to execute the code&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Double click the &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh.exe&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh85.exe&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Navigate to the &lt;code class=&quot;highlighter-rouge&quot;&gt;inputfile.tcl&lt;/code&gt;  folder using &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; commad&lt;/li&gt;
+  &lt;li&gt;Just type &lt;code class=&quot;highlighter-rouge&quot;&gt;tclsh inputfile.tcl&lt;/code&gt; and press enter&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Komodo uses the same executable to run the &lt;code class=&quot;highlighter-rouge&quot;&gt;.tcl&lt;/code&gt; scripts. We can execute the same without Komodo IDE. However, Komodo provides additional features
+such as variable type viewer, debugging using break points etc.&lt;/p&gt;
+
+&lt;h1 id=&quot;other-online-compilers---for-quick-reference&quot;&gt;Other Online Compilers - for quick reference&lt;/h1&gt;
+
+&lt;p&gt;Following are some online tools (&lt;em&gt;I Prefer most&lt;/em&gt;) to compile and cross verify the &lt;em&gt;.tcl&lt;/em&gt; code given below&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/execute_tcl_online.php&quot;&gt;Tutorials-Point IDE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rextester.com/l/tcl_online_compiler&quot;&gt;RexTester&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details (if require) will be added soon…&lt;/p&gt;
+
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Tcl" /><category term="ide" /><category term="komodo" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">This post in the Tcl Master Series is dedicated to setup various online and offline IDE(s) for practicing Tcl.</summary></entry><entry><title type="html">A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code</title><link href="https://vijaypolimeru.github.io/cyclic-constitutive-material-model/" rel="alternate" type="text/html" title="A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code" /><published>2020-02-20T00:00:00+05:30</published><updated>2020-02-20T00:00:00+05:30</updated><id>https://vijaypolimeru.github.io/cyclic-constitutive-model</id><content type="html" xml:base="https://vijaypolimeru.github.io/cyclic-constitutive-material-model/">&lt;p&gt;Defining constitutive relationships (&lt;script type=&quot;math/tex&quot;&gt;\sigma - \epsilon&lt;/script&gt;) of the constituent materials is one of essential steps in the 
+formulation of nonlinear finite element models. When the &lt;script type=&quot;math/tex&quot;&gt;\sigma - \epsilon&lt;/script&gt; relationship is linear such as &lt;script type=&quot;math/tex&quot;&gt;\sigma = E\epsilon&lt;/script&gt;, it is very easy, one line of
+code is enough. However, when the &lt;script type=&quot;math/tex&quot;&gt;\sigma - \epsilon&lt;/script&gt; relationship is nonlinear (&lt;a href=&quot;/images/amrc/steel01.jpg&quot;&gt;like this&lt;/a&gt; - this is the simplest example)
+it is very difficult to define. The number of load paths (unloading and reloading) will define the complexity of the code.&lt;/p&gt;
+
+&lt;p&gt;Any wrong definition of load path results in erroneous results or will show convergence issues. This process requires an &lt;em&gt;easy to read&lt;/em&gt; and &lt;em&gt;easy to debug&lt;/em&gt; algorithm. In this post, an attempt have 
+been made to provide such an algorithm for &lt;a href=&quot;https://opensees.berkeley.edu/wiki/index.php/Steel01_Material&quot;&gt;steel01&lt;/a&gt;, which is shown in Figure. 1.&lt;/p&gt;
+
+&lt;p&gt;Figure 1&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/amrc/steel01.jpg&quot; class=&quot;align-center&quot; alt=&quot;&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(Note - For simplicity purposes, the influence of parameters &lt;script type=&quot;math/tex&quot;&gt;a_1, a_2, a_3, a_4&lt;/script&gt; have been neglected and all the three load states involved in steel01, have been segregated into individual loadstates as shown in Figure. 2. However, creating such
+individual load states will ease the process of implementation of cyclic constitutive relationship in a computer program)&lt;/p&gt;
+
+&lt;p&gt;The basic idea (as shown in Figure. 2) is that, if at any instant the previous strain (OStrain, i.e. strain at step &lt;code class=&quot;highlighter-rouge&quot;&gt;(i-1)&lt;/code&gt;) is in a load state (LoadState) 
+represented by &lt;em&gt;solid black line&lt;/em&gt; in Figure. 2, the current strain (CStrain, i.e. strain at step &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt;) lies in any one of the load states 
+represented by &lt;em&gt;dashed black line&lt;/em&gt;. Our objevtive is identify that current load state and calculating the stress by using the equations of that load state.&lt;/p&gt;
+
+&lt;p&gt;Figure 2&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/amrc/load-states.jpg&quot; class=&quot;align-center&quot; alt=&quot;&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This can be implemented in the program as follows,&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dStrain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Represents change in direction&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CStrain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eps_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CStrain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CStrain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eps_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;elseif&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;A sample Matlab code for the load states of steel01 as shown in Figure. 2
+for a random strain profile is provided &lt;a href=&quot;https://docs.google.com/forms/d/e/1FAIpQLSd7xTwaWpJH89Cx8kfjO-ab9w6d-mS-rF_HZX6-uyzp8Lpb0Q/viewform?usp=sf_link&quot;&gt;here&lt;/a&gt; for further understanding, please download and comment your feedback and errors (if any).
+The equations involeved in every load path are available in the code.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Hope this information may be useful…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt; - If any example is not working or any links are not working, please comment I will update with appropriate ones…&lt;/p&gt;</content><author><name>Vijay Kumar Polimeru</name><email>vijaypolimeru@gmail.com</email></author><category term="Cyclic" /><category term="Constitutive Relationships" /><category term="Steel" /><category term="Matlab" /><category term="Vijay Kumar Polimeru" /><category term="Vijay Polimeru" /><summary type="html">Defining constitutive relationships () of the constituent materials is one of essential steps in the formulation of nonlinear finite element models. When the relationship is linear such as , it is very easy, one line of code is enough. However, when the relationship is nonlinear (like this - this is the simplest example) it is very difficult to define. The number of load paths (unloading and reloading) will define the complexity of the code.</summary></entry></feed>

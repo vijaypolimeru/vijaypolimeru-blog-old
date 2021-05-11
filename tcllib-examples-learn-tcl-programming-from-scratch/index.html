@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Standard Tcl Library (Tcllib) - Examples - Tcl Master Series</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Standard Tcl Library (Tcllib) - Examples - Tcl Master Series" />
+<meta name="author" content="Vijay Kumar Polimeru" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post in the Tcl Master Series is dedicated to discuss various packages available in the Standard Tcl Library (Tcllib). The emphasis is particularly laid upon the packages related to mathamatical operations." />
+<meta property="og:description" content="This post in the Tcl Master Series is dedicated to discuss various packages available in the Standard Tcl Library (Tcllib). The emphasis is particularly laid upon the packages related to mathamatical operations." />
+<link rel="canonical" href="https://vijaypolimeru.github.io/tcllib-examples-learn-tcl-programming-from-scratch/" />
+<meta property="og:url" content="https://vijaypolimeru.github.io/tcllib-examples-learn-tcl-programming-from-scratch/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-29T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Standard Tcl Library (Tcllib) - Examples - Tcl Master Series" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@mmistakes" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vijaypolimeru.github.io/tcllib-examples-learn-tcl-programming-from-scratch/"},"datePublished":"2020-03-29T00:00:00+05:30","url":"https://vijaypolimeru.github.io/tcllib-examples-learn-tcl-programming-from-scratch/","author":{"@type":"Person","name":"Vijay Kumar Polimeru"},"headline":"Standard Tcl Library (Tcllib) - Examples - Tcl Master Series","dateModified":"2020-03-29T00:00:00+05:30","description":"This post in the Tcl Master Series is dedicated to discuss various packages available in the Standard Tcl Library (Tcllib). The emphasis is particularly laid upon the packages related to mathamatical operations.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta property="og:image" content="https://vijaypolimeru.github.io/images/tcl-master-series/tcl-master-series-logo-3.png" />
+<meta property="og:description" content="" />
+
+
+  
+
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
+  
+  <!-- INCLUDE BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title=" " href="/atom.xml">
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+
+  <body class="layout--post  standard-tcl-library-tcllib-examples-tcl-master-series">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/index">Home</a></li><li><a href="/blog_home/">BLOG</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform">SIGN-UP</a></li><li><a href="/search/">BLOG SEARCH</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+
+                        <!-- <a class="dropdown-item" href="/faculty/biological-physics/">Biological Physics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biology-maths">Biology & Mathematics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biophysical-chemistry">Biophysical Chemistry</a> -->
+    <header class="masthead">
+  <div class="wrap">
+    
+    
+    
+      
+        <div class="site-title animated fadeIn"><a href="/"> </a></div>
+      
+      <p class="site-description animated fadeIn" itemprop="description"> </p>
+    
+  </div>
+</header><!-- /.masthead -->
+
+
+    <main id="main" class="main-content" aria-label="Content">
+  <article class="h-entry">
+    
+
+
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title p-name">Standard Tcl Library (Tcllib) - Examples - Tcl Master Series
+</h1>
+        
+      </header>
+
+      <div class="page-sidebar">
+        <div class="page-author h-card p-author"><img src="/images/vijay-polimeru-3.jpeg" class="author-avatar u-photo" alt="Vijay Kumar Polimeru"><div class="author-info"><div class="author-name">
+        <span class="p-name">Vijay Kumar Polimeru</span>
+      </div><ul class="author-links"><li class="author-link">
+            <a class="u-url" rel="me" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-lg" title="GitHub"></i></a>
+          </li></ul>
+
+<span class="read-time">4 min read</span>
+
+    <time class="page-date dt-published" datetime="2020-03-29T00:00:00+05:30"><a class="u-url" href="">March 29, 2020</a>
+</time>
+
+  </div>
+</div>
+
+        
+  <h3 class="page-taxonomies-title">Categories</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#tcl" title="Pages filed under Tcl">Tcl</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#tcl-master-series" title="Pages filed under Tcl Master Series">Tcl Master Series</a></li>
+  </ul>
+
+
+        
+  <h3 class="page-taxonomies-title">Tags</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#standard-tcl-library" title="Pages tagged Standard Tcl Library" rel="tag">Standard Tcl Library</a></li><li class="page-taxonomy"><a href="/tags/#tcl" title="Pages tagged Tcl" rel="tag">Tcl</a></li><li class="page-taxonomy"><a href="/tags/#tcllib" title="Pages tagged Tcllib" rel="tag">Tcllib</a></li><li class="page-taxonomy"><a href="/tags/#vijay-kumar-polimeru" title="Pages tagged Vijay Kumar Polimeru" rel="tag">Vijay Kumar Polimeru</a></li><li class="page-taxonomy"><a href="/tags/#vijay-polimeru" title="Pages tagged Vijay Polimeru" rel="tag">Vijay Polimeru</a></li>
+  </ul>
+
+
+      </div>
+
+      <div class="page-content">
+        <div class="e-content">
+          <p>This post in the <a href="/Learn-Tcl-Programming-from-Scratch/">Tcl Master Series</a> is dedicated to discuss various packages 
+available in the <strong><em>Standard Tcl Library (Tcllib)</em></strong>. The emphasis is particularly laid upon
+the packages related to mathamatical operations.</p>
+
+<p>The detailed documentation of <strong><em>Tcllib</em></strong> can be found <a href="https://core.tcl-lang.org/tcllib/doc/tcllib-1-20/embedded/md/toc.md">here</a></p>
+
+<h2 id="namespaces-and-packages">namespaces and packages</h2>
+
+<p>Before going to discuss about the usage of various libraries in <strong><em>tcllib</em></strong>, it is very essential to know about a concept called <code class="highlighter-rouge">namespace</code>. 
+In a computer program, the names of all program elements (such as variables, function names, memory addresses etc.) must be unique. 
+A namespace is an container created to hold the names of all program elements. The elements in a namespace are accessed using <code class="highlighter-rouge">::</code> called 
+<em>scope resolution operator</em>. Examples are as follows</p>
+
+<ol>
+  <li>If <code class="highlighter-rouge">add</code> is a function residing in <code class="highlighter-rouge">math</code> namespace, then <code class="highlighter-rouge">add</code> can be accessed as <code class="highlighter-rouge">::math::add</code></li>
+  <li>If <code class="highlighter-rouge">mean</code> is a function residing in <code class="highlighter-rouge">statistics</code> namespace which is nested in <code class="highlighter-rouge">math</code> namespace, then <code class="highlighter-rouge">mean</code> can be accessed as <code class="highlighter-rouge">::math::statistics::mean</code></li>
+</ol>
+
+<p>Packages are reusable units of code, in general these are also called as <em>libraries</em>. Usually, every package comes with its own <code class="highlighter-rouge">namespace</code> or sometimes have multiple 
+<code class="highlighter-rouge">namespaces</code>. <em>Tcllib</em>  has plethora of packages available for every purpose. To use a function from a package, we must first add it to our program using
+the command <code class="highlighter-rouge"><span class="k">package</span> <span class="n">require</span> <span class="n">packagename</span> <span class="n">version_number</span></code> (<code class="highlighter-rouge">version_number</code> is optional).</p>
+
+<p>Lets discuss some examples to understand using <em>Tcllib</em></p>
+
+<h2 id="vectors-and-matrices">Vectors and Matrices</h2>
+
+<p>Various operations on vectors and matrices are explained through the following examples.</p>
+
+<h4 id="example-1---creating-vectors-and-matrices"><em>Example 1</em> - Creating vectors and matrices</h4>
+
+<p>Tcllib provides <code class="highlighter-rouge">mkVector ndim value</code> and <code class="highlighter-rouge">mkMatrix nrows ncols value</code> to create vectors and matrices. In matrix each row is arranged as a <strong><em>list</em></strong>.
+However, these matrices or vectors are initialised with a <code class="highlighter-rouge">value</code>, which have to be modified later.</p>
+
+<div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 <span class="p">[</span>mm::mkMatrix 2 3 0<span class="p">];</span> # a 2X3 matrix, with elements as zeros
+set mat2 <span class="p">[</span>mm::mkMatrix 4 4 1<span class="p">];</span> # a 4X4 Square matrix, with elements as ones
+
+set vec1 <span class="p">[</span>mm::mkVector 5 0<span class="p">];</span> 
+
+puts $mat1
+puts $mat2
+
+puts $vec1
+</code></pre></div></div>
+
+<h4 id="example-2---getting-size-number-of-rows-and-columns"><em>Example 2</em> - Getting size (number of rows and columns)</h4>
+
+<p>To iterate through various indices of a matrix, it is essential to know the number of rows and columns upfront. <em>tcllib</em> does not have special functions for
+this purpose. However, since each row of a matrix is a <em>list</em> and number of elements in each row
+is equal to the number of columns, we can use functions of <em>lists</em> (such as <code class="highlighter-rouge">llength</code> and <code class="highlighter-rouge">lindex</code>) for this purpose,</p>
+
+<div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 <span class="p">[</span>mm::mkMatrix 2 3 0<span class="p">];</span> # a 2X3 matrix, with elements as zeros
+
+puts <span class="s2">"no. of rows in mat1 = </span><span class="p">[</span>llength $mat1<span class="p">]</span><span class="s2">"</span>
+puts <span class="s2">"no. of columns in mat1 = </span><span class="p">[</span>expr <span class="p">{[</span>llength <span class="p">[</span>lindex $mat1 0<span class="p">]]}]</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h4 id="example-3---getting-and-setting-elements-in-a-matrix"><em>Example 3</em> - Getting and Setting elements in a matrix</h4>
+
+<p>To set and get elements in a matrix, <em>Tcllib</em> provides, two special functions <code class="highlighter-rouge">getelem matrix row col</code> and <code class="highlighter-rouge">setelem matrix row ?col? newvalue</code>. <code class="highlighter-rouge">newvalue</code> can be a number or string.
+However, matrix operations such as inverse, determinant, addition, substraction, etc can be performed only on numbers</p>
+
+<div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 <span class="p">[</span>mm::mkMatrix 2 3 0<span class="p">];</span> # a 2X3 matrix, with elements as zeros
+
+puts $mat1
+
+for <span class="p">{</span> set i 0 <span class="p">}</span>  <span class="p">{</span> $i &lt; <span class="p">[</span>llength $mat1<span class="p">]</span> <span class="p">}</span>  <span class="p">{</span> incr i <span class="p">}</span> <span class="p">{</span>
+    for <span class="p">{</span> set j 0 <span class="p">}</span>  <span class="p">{</span> $j &lt; <span class="p">[</span>expr <span class="p">{[</span>llength <span class="p">[</span>lindex $mat1 0<span class="p">]]}]</span> <span class="p">}</span>  <span class="p">{</span> incr j <span class="p">}</span> <span class="p">{</span>
+        mm::setelem mat1 $i $j <span class="p">[</span>expr rand<span class="p">()]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+puts $mat1
+puts <span class="p">[</span>mm::getelem $mat1 1 1<span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="example-4---addition-substraction-multiplication-determinant-and-inverse"><em>Example 4</em> - Addition, Substraction, Multiplication, Determinant and Inverse</h4>
+
+<p>Addition, Substraction, Multiplication and Determinant have straight forward procs for evaluation in <em>tcllib</em>. However, there are
+several functions (such as Gauss, PGauss, Triangular etc.) for evaluating inverse</p>
+
+<div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package require math::linearalgebra
+
+namespace eval mm namespace import ::math::linearalgebra::*
+
+set mat1 <span class="p">[</span>mm::mkMatrix 5 5 0<span class="p">];</span> # a 4X4 matrix, with elements as zeros
+set mat2 <span class="p">[</span>mm::mkMatrix 5 5 0<span class="p">];</span> # a 4X4 matrix, with elements as zeros
+
+for <span class="p">{</span> set i 0 <span class="p">}</span>  <span class="p">{</span> $i &lt; <span class="p">[</span>llength $mat1<span class="p">]</span> <span class="p">}</span>  <span class="p">{</span> incr i <span class="p">}</span> <span class="p">{</span>
+    for <span class="p">{</span> set j 0 <span class="p">}</span>  <span class="p">{</span> $j &lt; <span class="p">[</span>expr <span class="p">{[</span>llength <span class="p">[</span>lindex $mat1 0<span class="p">]]}]</span> <span class="p">}</span>  <span class="p">{</span> incr j <span class="p">}</span> <span class="p">{</span>
+        mm::setelem mat1 $i $j <span class="p">[</span>expr rand<span class="p">()]</span>
+        mm::setelem mat2 $i $j <span class="p">[</span>expr rand<span class="p">()]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+puts $mat1
+puts $mat2
+
+<span class="c1"># Addition, Substraction, Multiplication and Determinant</span>
+
+set sum_mats <span class="p">[</span>mm::add_mat $mat1 $mat2<span class="p">]</span>
+set diff_mats <span class="p">[</span>mm::sub_mat $mat1 $mat2<span class="p">]</span>
+set Multip_mats <span class="p">[</span>mm::matmul $mat1 $mat2<span class="p">]</span>
+set det_mat2 <span class="p">[</span>mm::det $mat2<span class="p">]</span>
+
+<span class="c1"># Inverse</span>
+
+set matID <span class="p">[</span>mm::mkIdentity <span class="p">[</span>llength $mat2<span class="p">]]</span>
+set mat2_inv <span class="p">[</span>mm::solvePGauss  $mat2 $matID<span class="p">]</span>
+
+puts <span class="s2">"Check Inverse = </span><span class="p">[</span>mm::matmul $mat2_inv $mat2<span class="p">]</span><span class="s2">"</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p>More examples will be added soon…</p>
+
+<p>Hope this information may be useful…</p>
+
+<p><strong><em>Note</em></strong> - If any example is not working or any links are not working, please comment I will update with appropriate ones…</p>
+
+<p>Last Updated: 2020-03-24</p>
+
+        </div>
+		
+		<hr>
+		
+		<div class="container">
+		<div class="card">
+		  <div class="card-header">
+			For More Updates ...
+		  </div>
+		  <div class="card-body">
+			<p class="card-text"> Subscribe and download our best stuff (<i><b>for free</b></i>) on OpenSees (Tcl and Python), Visual Studio (C++), Matlab, Finite Element Analysis and several other topics</p>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform" class="btn btn-primary float-right">Subscribe...</a>
+		  </div>
+		</div>
+		</div>
+
+        
+          <div class="page-share">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvijaypolimeru.github.io%2Ftcllib-examples-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Standard+Tcl+Library+%28Tcllib%29+-+Examples+-+Tcl+Master+Series%20https%3A%2F%2Fvijaypolimeru.github.io%2Ftcllib-examples-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvijaypolimeru.github.io%2Ftcllib-examples-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
+  <a href="https://reddit.com/submit?title=Standard+Tcl+Library+%28Tcllib%29+-+Examples+-+Tcl+Master+Series&url=https%3A%2F%2Fvijaypolimeru.github.io%2Ftcllib-examples-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
+</div>
+
+        
+
+        
+          
+
+        
+
+        <nav class="page-pagination" role="navigation">
+  
+    <a class="page-previous" href="/tcllib-installation-learn-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Previous</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> Standard Tcl Library (Tcllib) - Installation - Tcl Master Series
+
+      </span>
+    </a>
+  
+
+  
+    <a class="page-next" href="/exception-handling-learn-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Next</h4>
+      <span class="page-pagination-title">
+        Exception Handling - Tcl Master Series
+ <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  
+</nav>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+    <footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-2x" title="GitHub"></i></a></div><div class="copyright">
+    
+      <p>&copy; 2021  . Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
+    
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/assets/js/main.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+
+</html>

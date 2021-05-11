@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Simply Simplest tool to overcome non-convergence issues in OpenSees</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Simply Simplest tool to overcome non-convergence issues in OpenSees" />
+<meta name="author" content="Vijay Kumar Polimeru" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Convergence issues are pretty common in any nonlinear finite element program, OpenSees, however is also not immune to these. In case of a convergence error, opensees throws a strange error message like this" />
+<meta property="og:description" content="Convergence issues are pretty common in any nonlinear finite element program, OpenSees, however is also not immune to these. In case of a convergence error, opensees throws a strange error message like this" />
+<link rel="canonical" href="https://vijaypolimeru.github.io/research/opensees/programming/convergence/2020/02/02/smart-analyse.html" />
+<meta property="og:url" content="https://vijaypolimeru.github.io/research/opensees/programming/convergence/2020/02/02/smart-analyse.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-02T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Simply Simplest tool to overcome non-convergence issues in OpenSees" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@mmistakes" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vijaypolimeru.github.io/research/opensees/programming/convergence/2020/02/02/smart-analyse.html"},"datePublished":"2020-02-02T00:00:00+05:30","url":"https://vijaypolimeru.github.io/research/opensees/programming/convergence/2020/02/02/smart-analyse.html","author":{"@type":"Person","name":"Vijay Kumar Polimeru"},"headline":"Simply Simplest tool to overcome non-convergence issues in OpenSees","dateModified":"2020-02-02T00:00:00+05:30","description":"Convergence issues are pretty common in any nonlinear finite element program, OpenSees, however is also not immune to these. In case of a convergence error, opensees throws a strange error message like this","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta property="og:image" content="" />
+<meta property="og:description" content="" />
+
+
+  
+
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
+  
+  <!-- INCLUDE BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title=" " href="/atom.xml">
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+
+  <body class="layout--post  simply-simplest-tool-to-overcome-non-convergence-issues-in-opensees">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/index">Home</a></li><li><a href="/blog_home/">BLOG</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform">SIGN-UP</a></li><li><a href="/search/">BLOG SEARCH</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+
+                        <!-- <a class="dropdown-item" href="/faculty/biological-physics/">Biological Physics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biology-maths">Biology & Mathematics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biophysical-chemistry">Biophysical Chemistry</a> -->
+    <header class="masthead">
+  <div class="wrap">
+    
+    
+    
+      
+        <div class="site-title animated fadeIn"><a href="/"> </a></div>
+      
+      <p class="site-description animated fadeIn" itemprop="description"> </p>
+    
+  </div>
+</header><!-- /.masthead -->
+
+
+    <main id="main" class="main-content" aria-label="Content">
+  <article class="h-entry">
+    
+
+
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title p-name">Simply Simplest tool to overcome non-convergence issues in OpenSees
+</h1>
+        
+      </header>
+
+      <div class="page-sidebar">
+        <div class="page-author h-card p-author"><img src="/images/vijay-polimeru-3.jpeg" class="author-avatar u-photo" alt="Vijay Kumar Polimeru"><div class="author-info"><div class="author-name">
+        <span class="p-name">Vijay Kumar Polimeru</span>
+      </div><ul class="author-links"><li class="author-link">
+            <a class="u-url" rel="me" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-lg" title="GitHub"></i></a>
+          </li></ul>
+
+<span class="read-time">3 min read</span>
+
+    <time class="page-date dt-published" datetime="2020-02-02T00:00:00+05:30"><a class="u-url" href="">February 2, 2020</a>
+</time>
+
+  </div>
+</div>
+
+        
+  <h3 class="page-taxonomies-title">Categories</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#opensees" title="Pages filed under OpenSees">OpenSees</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#programming" title="Pages filed under Programming">Programming</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#research" title="Pages filed under Research">Research</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#convergence" title="Pages filed under convergence">convergence</a></li>
+  </ul>
+
+
+        
+  <h3 class="page-taxonomies-title">Tags</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#research" title="Pages tagged Research" rel="tag">Research</a></li><li class="page-taxonomy"><a href="/tags/#convergence" title="Pages tagged convergence" rel="tag">convergence</a></li><li class="page-taxonomy"><a href="/tags/#opensees" title="Pages tagged opensees" rel="tag">opensees</a></li><li class="page-taxonomy"><a href="/tags/#script" title="Pages tagged script" rel="tag">script</a></li>
+  </ul>
+
+
+      </div>
+
+      <div class="page-content">
+        <div class="e-content">
+          <p>Convergence issues are pretty common in any nonlinear finite element program, OpenSees, however is also not immune to these. 
+In case of a convergence error, opensees throws a strange <em>error message</em> like this</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: CTest*::test() - failed to converge
+after * iterations
+ current EnergyIncr: * Norm deltaX: *, Norm deltaR: *
+*::solveCurrentStep() - The ConvergenceTest object failed in test()
+StaticAnalysis::analyze() - the Algorithm failed at iteration: * with domain at load factor *
+OpenSees &gt; analyze failed, returned: -3 error flag
+</code></pre></div></div>
+
+<p>It is just telling that <code class="highlighter-rouge">ConvergenceTest</code> object failed in <code class="highlighter-rouge">test()</code> and does not give any information about the source of error.</p>
+
+<p>Then, How to resove this??</p>
+
+<p>In general, convergence issues occur primariliy due to inappropriate step size (too large or too small), stringent tolerances, algorithms, convergence test criteria. 
+These are some of the possible sources of convergence issues. In special cases (such as inappropriately defined material models, elements and FE Mesh) Its very difficult 
+to zero-in the source of error by optimising the step sizes, tolerances, algorithms etc. In such special cases it is very essential to correct the material models or 
+elements before updating step-sizes, tolerances, algorithms etc.</p>
+
+<p>In this post we will discuss about some tools to resolve the convergence issues in general cases. The idea behind these tools is simply adaptively trying varying step-size, tolerances, 
+algorithms. The simplest example of such adaptive tool for performing static pushover analysis can be found in the opensees examples (<a href="https://opensees.berkeley.edu/wiki/images/7/70/Ex3.Canti2D.analyze.Static.Push.tcl">link</a>),</p>
+
+<div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#  ---------------------------------    perform Static Pushover Analysis</span>
+set Nsteps <span class="p">[</span>expr int<span class="p">(</span>$Dmax/$Dincr<span class="p">)];</span>        # number of pushover analysis steps
+set ok <span class="p">[</span>analyze $Nsteps<span class="p">];</span>                # this will return zero if no convergence problems were encountered
+
+if <span class="p">{</span><span class="nv">$ok</span> != 0<span class="p">}</span> <span class="p">{</span>      
+	# if analysis fails, we try some other stuff, performance is slower inside this loop
+	set ok 0<span class="p">;</span>
+	set controlDisp 0.0<span class="p">;</span>
+	set D0 0.0<span class="p">;</span>		# analysis starts from zero
+	set Dstep <span class="p">[</span>expr <span class="p">(</span><span class="nv">$control</span>Disp-$D0<span class="p">)</span>/<span class="p">(</span>$Dmax-$D0<span class="p">)]</span>
+	while <span class="p">{</span>$Dstep &lt; 1.0 &amp;&amp; $ok == 0<span class="p">}</span> <span class="p">{</span>	
+		set controlDisp <span class="p">[</span>nodeDisp $IDctrlNode $IDctrlDOF <span class="p">]</span>
+		set Dstep <span class="p">[</span>expr <span class="p">(</span><span class="nv">$control</span>Disp-$D0<span class="p">)</span>/<span class="p">(</span>$Dmax-$D0<span class="p">)]</span>
+		set ok <span class="p">[</span>analyze 1 <span class="p">]</span>
+		if <span class="p">{</span><span class="nv">$ok</span> != 0<span class="p">}</span> <span class="p">{</span>
+			puts <span class="s2">"Trying Newton with Initial Tangent .."</span>
+			test NormDispIncr   $Tol 2000  0
+			algorithm Newton -initial
+			set ok <span class="p">[</span>analyze 1 <span class="p">]</span>
+			test $TestType $Tol $maxNumIter  0
+			algorithm $algorithmType
+		<span class="p">}</span>
+		if <span class="p">{</span><span class="nv">$ok</span> != 0<span class="p">}</span> <span class="p">{</span>
+			puts <span class="s2">"Trying Broyden .."</span>
+			algorithm Broyden 8
+			set ok <span class="p">[</span>analyze 1 <span class="p">]</span>
+			algorithm $algorithmType
+		<span class="p">}</span>
+		if <span class="p">{</span><span class="nv">$ok</span> != 0<span class="p">}</span> <span class="p">{</span>
+			puts <span class="s2">"Trying NewtonWithLineSearch .."</span>
+			algorithm NewtonLineSearch .8
+			set ok <span class="p">[</span>analyze 1 <span class="p">]</span>
+			algorithm $algorithmType
+		<span class="p">}</span>
+				<span class="p">};</span>	# end while loop
+<span class="p">};</span>      # end if ok !0
+
+</code></pre></div></div>
+
+<p>Similar algorithms can be found in the opensees examples database for static cyclic and transient analysis aswell.</p>
+
+<p>OpenSees consists of many algorithms (8 algortihms namely Linear, Newton, ModifiedNewton, Newton with line search, KrylovNewton, SecantNewton, BFGS and Broyden are primarily used) and each algorithm 
+has various options. On top of that each algorithm can be coupled with variety of convergence test objects available in opensees, various combinatons of step-sizes etc.</p>
+
+<p>This humongous task can be easily perfomed with the help of a simple open-source tool called <code class="highlighter-rouge">SmartAnalyze.tcl</code> developed by <a href="http://www.hanlindong.com/en/2019/opensees-converge/">Hanlin Dong</a>.
+In this tool all the available algorithms in opensees are pre-defined with various combinations of alogrithm options, convergence tests and tolerances.
+This tool has a simple interface to connect the nonlinear finite element model with <code class="highlighter-rouge">SmartAnalyze.tcl</code> and there by perform static, quasi-static and transient anlyses. 
+A simple example of transient analysis using <code class="highlighter-rouge">SmartAnalyze.tcl</code> is as follows</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source SmartAnalyze.tcl
+dict set control testTol 1.0e-2; # Change test tolerance
+dict set control tryAlterAlgoTypes True; # Try to change algorithm (default: False)
+dict set control algoTypes {40 20}; # Config the algorithms to run by a list of tags (refer to the comments in the code)
+dict set control tryForceConverge True; # force the model to converge.
+
+
+while {$controlTime &lt; $TmaxAnalysis &amp;&amp; $ok == 0} { 
+
+	SmartAnalyzeTransient $DtAnalysis 1 control
+	#set ok [analyze 1 $DtAnalysis];			# actually perform analysis; returns ok=0 if analysis was successful
+	set controlTime [getTime]
+	puts "Current Time In the Domain = $controlTime ---------------------------------------------------------------";
+}
+
+</code></pre></div></div>
+
+<p>Readers can download version 2.2 of the tool, from <a href="https://forms.gle/xDTXbCzkvg2w1Rz1A">here</a>. However, more information and latest updates on the tool
+can be found <a href="http://www.hanlindong.com/en/2019/opensees-converge/">here</a>.</p>
+
+        </div>
+		
+		<hr>
+		
+		<div class="container">
+		<div class="card">
+		  <div class="card-header">
+			For More Updates ...
+		  </div>
+		  <div class="card-body">
+			<p class="card-text"> Subscribe and download our best stuff (<i><b>for free</b></i>) on OpenSees (Tcl and Python), Visual Studio (C++), Matlab, Finite Element Analysis and several other topics</p>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform" class="btn btn-primary float-right">Subscribe...</a>
+		  </div>
+		</div>
+		</div>
+
+        
+          <div class="page-share">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fopensees%2Fprogramming%2Fconvergence%2F2020%2F02%2F02%2Fsmart-analyse.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Simply+Simplest+tool+to+overcome+non-convergence+issues+in+OpenSees%20https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fopensees%2Fprogramming%2Fconvergence%2F2020%2F02%2F02%2Fsmart-analyse.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fopensees%2Fprogramming%2Fconvergence%2F2020%2F02%2F02%2Fsmart-analyse.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
+  <a href="https://reddit.com/submit?title=Simply+Simplest+tool+to+overcome+non-convergence+issues+in+OpenSees&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fopensees%2Fprogramming%2Fconvergence%2F2020%2F02%2F02%2Fsmart-analyse.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
+</div>
+
+        
+
+        
+          
+
+        
+
+        <nav class="page-pagination" role="navigation">
+  
+    <a class="page-previous" href="/research/opensees/programming/ubuntu/2020/02/02/compile-opensees-ubuntu.html">
+      <h4 class="page-pagination-label">Previous</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> Simply Simplest way to compile OpenSees in Ubuntu
+
+      </span>
+    </a>
+  
+
+  
+    <a class="page-next" href="/research/plotting/programming/graphics/opensees/visual%20studio/2020/02/05/plotting-in-cpp.html">
+      <h4 class="page-pagination-label">Next</h4>
+      <span class="page-pagination-title">
+        Four Simple tools to draw beautiful plots in C++
+ <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  
+</nav>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+    <footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-2x" title="GitHub"></i></a></div><div class="copyright">
+    
+      <p>&copy; 2021  . Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
+    
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/assets/js/main.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+
+</html>

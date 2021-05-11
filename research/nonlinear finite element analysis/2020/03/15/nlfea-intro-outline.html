@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Introduction to Nonlinear Finite Element Analysis</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Introduction to Nonlinear Finite Element Analysis" />
+<meta name="author" content="Vijay Kumar Polimeru" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Finite Element Analysis (FEA) is one of the several methods avaibale to solve differential equations that describe many engineering problems. This method is formally introduced to the engineering students at under-graduate level to solve material and geometrically linear problems. An advanced version of this subject called Nonlinear Finite Element Analysis (NLFEA) is often introduced in the curriculum for post-graduate students. Most of the time it left as a subject for self-study. For researchers who are working in the field of computational mechanics, a thorough understanding on this subject is very essential." />
+<meta property="og:description" content="Finite Element Analysis (FEA) is one of the several methods avaibale to solve differential equations that describe many engineering problems. This method is formally introduced to the engineering students at under-graduate level to solve material and geometrically linear problems. An advanced version of this subject called Nonlinear Finite Element Analysis (NLFEA) is often introduced in the curriculum for post-graduate students. Most of the time it left as a subject for self-study. For researchers who are working in the field of computational mechanics, a thorough understanding on this subject is very essential." />
+<link rel="canonical" href="https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html" />
+<meta property="og:url" content="https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-15T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction to Nonlinear Finite Element Analysis" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@mmistakes" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html"},"datePublished":"2020-03-15T00:00:00+05:30","url":"https://vijaypolimeru.github.io/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html","author":{"@type":"Person","name":"Vijay Kumar Polimeru"},"headline":"Introduction to Nonlinear Finite Element Analysis","dateModified":"2020-03-15T00:00:00+05:30","description":"Finite Element Analysis (FEA) is one of the several methods avaibale to solve differential equations that describe many engineering problems. This method is formally introduced to the engineering students at under-graduate level to solve material and geometrically linear problems. An advanced version of this subject called Nonlinear Finite Element Analysis (NLFEA) is often introduced in the curriculum for post-graduate students. Most of the time it left as a subject for self-study. For researchers who are working in the field of computational mechanics, a thorough understanding on this subject is very essential.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta property="og:image" content="" />
+<meta property="og:description" content="" />
+
+
+  
+
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
+  
+  <!-- INCLUDE BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title=" " href="/atom.xml">
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+
+  <body class="layout--post  introduction-to-nonlinear-finite-element-analysis">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/index">Home</a></li><li><a href="/blog_home/">BLOG</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform">SIGN-UP</a></li><li><a href="/search/">BLOG SEARCH</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+
+                        <!-- <a class="dropdown-item" href="/faculty/biological-physics/">Biological Physics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biology-maths">Biology & Mathematics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biophysical-chemistry">Biophysical Chemistry</a> -->
+    <header class="masthead">
+  <div class="wrap">
+    
+    
+    
+      
+        <div class="site-title animated fadeIn"><a href="/"> </a></div>
+      
+      <p class="site-description animated fadeIn" itemprop="description"> </p>
+    
+  </div>
+</header><!-- /.masthead -->
+
+
+    <main id="main" class="main-content" aria-label="Content">
+  <article class="h-entry">
+    
+
+
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title p-name">Introduction to Nonlinear Finite Element Analysis
+</h1>
+        
+      </header>
+
+      <div class="page-sidebar">
+        <div class="page-author h-card p-author"><img src="/images/vijay-polimeru-3.jpeg" class="author-avatar u-photo" alt="Vijay Kumar Polimeru"><div class="author-info"><div class="author-name">
+        <span class="p-name">Vijay Kumar Polimeru</span>
+      </div><ul class="author-links"><li class="author-link">
+            <a class="u-url" rel="me" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-lg" title="GitHub"></i></a>
+          </li></ul>
+
+<span class="read-time">4 min read</span>
+
+    <time class="page-date dt-published" datetime="2020-03-15T00:00:00+05:30"><a class="u-url" href="">March 15, 2020</a>
+</time>
+
+  </div>
+</div>
+
+        
+  <h3 class="page-taxonomies-title">Categories</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#nonlinear-finite-element-analysis" title="Pages filed under Nonlinear Finite Element Analysis">Nonlinear Finite Element Analysis</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#research" title="Pages filed under Research">Research</a></li>
+  </ul>
+
+
+        
+  <h3 class="page-taxonomies-title">Tags</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#introduction" title="Pages tagged Introduction" rel="tag">Introduction</a></li><li class="page-taxonomy"><a href="/tags/#nlfea" title="Pages tagged nlfea" rel="tag">nlfea</a></li>
+  </ul>
+
+
+      </div>
+
+      <div class="page-content">
+        <div class="e-content">
+          <p>Finite Element Analysis (FEA) is one of the several methods avaibale to solve differential equations that describe many engineering problems. This method is
+formally introduced to the engineering students at under-graduate level to solve material and geometrically linear problems. An advanced version of 
+this subject called Nonlinear Finite Element Analysis (NLFEA) is often introduced in the curriculum for post-graduate students. Most of the time it left
+as a subject for self-study. For researchers who are working in the field of computational mechanics, a thorough understanding on this subject is very
+essential.</p>
+
+<p>In this series of posts on Nonlinear Finite Element Analysis, I will try to cover different topics involved in NLFEA. As a starting point, I have taken 
+the following outline of contents from the <a href="https://www.researchgate.net/publication/269411458_Nonlinear_Finite_Element_Analysis_Notes">Lecture Notes</a> 
+written by <a href="https://www.researchgate.net/profile/Ioannis_Koutromanos">Prof. Ioannis Koutromanos</a>, because the contents are almost exhaustive and they will serve
+as a good signposts to learn NLFEA. However, the content provided in respective posts is purely my understanding on the subject and also depending on the topic, 
+I will introduce new contents along with more examples and MATLAB/Python codes.</p>
+
+<p><strong><em>Table of Contents</em></strong></p>
+
+<ol>
+  <li>Nonlinear Finite Element Analysis–A Point of Departure
+    <ol>
+      <li>Revisiting the concept of linear elasticity</li>
+      <li>Introduction to Nonlinear material behavior</li>
+      <li>Interlude: Description of Elastic behavior – Generic Description of Elastoplastic Materials</li>
+      <li>Numerical Description of Nonlinear stress-strain laws – The discrete approach
+        <ol>
+          <li>Example of a stress-strain law and of algorithmic implementation: Uniaxial elastic-hardening material with linear isotropic hardening</li>
+          <li>Kinematic Hardening</li>
+        </ol>
+      </li>
+      <li>Stress-Strain models in total form</li>
+      <li>Tangent slope of stress-strain diagram</li>
+    </ol>
+  </li>
+  <li>Introduction to Nonlinear Analysis of Trusses and Beams
+    <ol>
+      <li>Nonlinear Analysis of Truss Structures</li>
+      <li>Nonlinear Analysis of Beam Structures</li>
+      <li>Generalized stress – generalized strain relation for Nonlinear Euler-Bernoulli beams based on uniaxial material laws – The layer (fiber) section model.</li>
+      <li>Solution of nonlinear equations – The iterative Approach
+        <ol>
+          <li>Example 2.1: Iterative solution of scalar nonlinear equation</li>
+          <li>Example 2.2: Iterative solution of system of nonlinear equations</li>
+        </ol>
+      </li>
+      <li>Application of Iterative Solution Procedure to Nonlinear Structural Analysis
+        <ol>
+          <li>Discussion-Convergence behavior of Newton-Raphson method</li>
+          <li>Tangent stiffness matrix for truss elements</li>
+          <li>Tangent stiffness matrix for beam elements (in the local coordinate system)</li>
+        </ol>
+      </li>
+      <li>Types of Newton-Raphson Iterative Methods</li>
+      <li>Incremental – Iterative Procedure for Nonlinear problems-Load control and displacement control – proportional loading.
+        <ol>
+          <li>Example 2.3: Solution of nonlinear structure</li>
+        </ol>
+      </li>
+      <li>Interlude 1: Some necessary introduction – The BASIC system of a beam and the basic displacements/rotations.</li>
+      <li>Interlude 2: Force-based (flexibility-based) beam elements
+        <ol>
+          <li>Weak form of Compatibility Equations – Principle of Virtual Forces</li>
+          <li>Force interpolation – Force-based elements</li>
+          <li>Nonlinear Force-Based Elements</li>
+        </ol>
+      </li>
+      <li>Accounting for Geometric Nonlinearities in Structural Analysis – The corotational formulation</li>
+    </ol>
+  </li>
+  <li>Finite Elements for Small-Strain Inelastic Solid Mechancis
+    <ol>
+      <li>Introduction – Basic Definitions</li>
+      <li>Governing equations in solid mechanics – The conservation (balance) laws
+        <ol>
+          <li>Conservation of mass for small-strain problems</li>
+          <li>Conservation of linear momentum for small-strain problems</li>
+          <li>Strong form of Conservation of Linear Momentum (equation of motion)</li>
+          <li>Conservation of angular momentum</li>
+          <li>Conservation of energy (1st law of thermodynamics)</li>
+        </ol>
+      </li>
+      <li>Weak form for 3D equations of motion</li>
+      <li>Piecewise Finite Element Approximation – Assembly Equations
+        <ol>
+          <li>Partition to unrestrained and restrained degrees of freedom</li>
+          <li>Accounting for the effect of viscous damping forces</li>
+        </ol>
+      </li>
+      <li>Solution for General, Time-dependent solid mechanics problems
+        <ol>
+          <li>Newmark Method for Step-by-step solution of equations of motion</li>
+          <li>Explicit Central Difference Method for equations of motion</li>
+          <li>Example 3.1: Explicit Central Difference Update</li>
+          <li>Example 3.2: Use of Explicit Analysis for Static Loading</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Elastoplasticity and Numerical Implementation
+    <ol>
+      <li>Introduction – Basic Definitions</li>
+      <li>The yield condition for multiaxial elastoplasticity – Yield criteria</li>
+      <li>The flow rule for elastoplasticity – Plastic Potential Function – Associative and Non-Associative flow rules
+        <ol>
+          <li>Example 4.1: Isochoric Plastic flow for von Mises criterion</li>
+          <li>Example 4.2: Effective plastic strain and plastic multiplier</li>
+          <li>Example 4.3: Plastic flow for uniaxial stress</li>
+        </ol>
+      </li>
+      <li>Perfect Plasticity and Hardening</li>
+      <li>The consistency condition – Elastoplastic Material Tangent Stiffness Matrix
+        <ol>
+          <li>Example 4.4: Calculations for non-associative flow rule in elastoplastic material</li>
+        </ol>
+      </li>
+      <li>Numerical Stress Update procedure
+        <ol>
+          <li>The Radial Return Algorithm for J2 plasticity</li>
+          <li>Generalized Cutting Plane Algorithm</li>
+          <li>Algorithmic Tangent Moduli</li>
+          <li>Example 4.5: Calculations for von Mises model with mixed linear hardening.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Large Deformation Solid Mechanics
+    <ol>
+      <li>Introduction – Reference/Current Configuration – The Motion Mapping</li>
+      <li>Material and Spatial Descriptions – The material time derivative
+        <ol>
+          <li>Example 5.1: Description using material and spatial coordinates</li>
+        </ol>
+      </li>
+      <li>The deformation gradient of the motion and the polar decomposition theorem</li>
+      <li>Deformation Measures in the Current and in the Reference Configuration
+        <ol>
+          <li>Example 5.2: Large deformation kinematics</li>
+        </ol>
+      </li>
+      <li>Stress Measures in the Current and in the Reference Configuration</li>
+      <li>The Need for Objective Stress Rates</li>
+      <li>Governing Equations with Respect to Reference Configuration – Total Lagrangian Formulation</li>
+      <li>Governing Equations with Respect to CURRENT Configuration</li>
+      <li>A “trick” to use the current configuration without convective terms: The updated Lagrangian formulation.</li>
+      <li>Weak form for total Lagrangian formulation: Principle of Virtual Work</li>
+      <li>Weak form for Updated Lagrangian formulation: Principle of Virtual Power</li>
+    </ol>
+  </li>
+  <li>Finite Element Solution For Large-Deformation Problems
+    <ol>
+      <li>Introduction</li>
+      <li>Finite Element Equations for Total Lagrangian Formulation</li>
+      <li>Finite Element Equations for Updated Lagrangian Formulation</li>
+      <li>Concluding Remarks on Updated Lagrangian formulation</li>
+    </ol>
+  </li>
+  <li>Further Iterative Solution Strategies
+    <ol>
+      <li>Introduction</li>
+      <li>Alternative Convergence Criteria for Iterative Solutions</li>
+      <li>Alternative Iterative Strategies – Quasi-Newton Methods
+        <ol>
+          <li>Quasi-Newton method using rank-1 update – The Broyden method</li>
+          <li>Quasi-Newton method using rank-2 update – The BFGS method</li>
+        </ol>
+      </li>
+      <li>Increasing the efficiency and robustness of iterative procedures
+        <ol>
+          <li>Subincrementation</li>
+          <li>Using Line-search in iterative procedures</li>
+          <li>Further Note: efficient use of Newton-Raphson iteration</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Vector-Tensor Calculus
+    <ol>
+      <li>Introduction – Scalar and Tensor quantities - Vectors</li>
+      <li>Definition of Stress tensor – Second-order tensors</li>
+      <li>Coordinate Transformation Rules for Vectors</li>
+      <li>Summation Convention
+        <ol>
+          <li>Example 8.1: Summation Convention</li>
+        </ol>
+      </li>
+      <li>Coordinate transformation law for 2nd order tensors</li>
+      <li>Tensor Invariants</li>
+      <li>Volumetric and deviatoric parts of stress and strain</li>
+      <li>Principal Values and Principal Directions of a Tensor</li>
+      <li>The principal stress-space representation</li>
+      <li><script type="math/tex">\pi</script>-plane and Haigh-Westergaard coordinates</li>
+      <li>Derivatives of Invariants, deviatoric invariants and Haigh-Westergaard coordinates with stress components
+        <ol>
+          <li>Example 8.2: Calculations with three-dimensional tensors</li>
+        </ol>
+      </li>
+      <li>Principal Values and Principal Directions of a Tensor</li>
+    </ol>
+  </li>
+  <li>Standalone Program for Nonlinear Analysis
+    <ol>
+      <li>Program Description</li>
+      <li>Program Source Code</li>
+      <li>Sample Input File</li>
+    </ol>
+  </li>
+</ol>
+
+<hr />
+<p>Hope this information may be useful…</p>
+
+<p><strong><em>Note</em></strong> - If any example is not working or any links are not working, please comment I will update with appropriate ones…</p>
+
+<p>Last Updated: 2020-03-10</p>
+
+        </div>
+		
+		<hr>
+		
+		<div class="container">
+		<div class="card">
+		  <div class="card-header">
+			For More Updates ...
+		  </div>
+		  <div class="card-body">
+			<p class="card-text"> Subscribe and download our best stuff (<i><b>for free</b></i>) on OpenSees (Tcl and Python), Visual Studio (C++), Matlab, Finite Element Analysis and several other topics</p>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform" class="btn btn-primary float-right">Subscribe...</a>
+		  </div>
+		</div>
+		</div>
+
+        
+          <div class="page-share">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fnonlinear%2520finite%2520element%2520analysis%2F2020%2F03%2F15%2Fnlfea-intro-outline.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Introduction+to+Nonlinear+Finite+Element+Analysis%20https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fnonlinear%2520finite%2520element%2520analysis%2F2020%2F03%2F15%2Fnlfea-intro-outline.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fnonlinear%2520finite%2520element%2520analysis%2F2020%2F03%2F15%2Fnlfea-intro-outline.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
+  <a href="https://reddit.com/submit?title=Introduction+to+Nonlinear+Finite+Element+Analysis&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fresearch%2Fnonlinear%2520finite%2520element%2520analysis%2F2020%2F03%2F15%2Fnlfea-intro-outline.html" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
+</div>
+
+        
+
+        
+          
+
+        
+
+        <nav class="page-pagination" role="navigation">
+  
+    <a class="page-previous" href="/start-your-first-website/">
+      <h4 class="page-pagination-label">Previous</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> Start your first website using MkDocs
+
+      </span>
+    </a>
+  
+
+  
+    <a class="page-next" href="/dict-learn-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Next</h4>
+      <span class="page-pagination-title">
+        Dictionary - Tcl Master Series
+ <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  
+</nav>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+    <footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-2x" title="GitHub"></i></a></div><div class="copyright">
+    
+      <p>&copy; 2021  . Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
+    
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/assets/js/main.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+
+</html>

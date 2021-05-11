@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Dictionary - Tcl Master Series</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Dictionary - Tcl Master Series" />
+<meta name="author" content="Vijay Kumar Polimeru" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post in the Tcl Master Series is dedicated to discuss various operations on Dictionaries in Tcl." />
+<meta property="og:description" content="This post in the Tcl Master Series is dedicated to discuss various operations on Dictionaries in Tcl." />
+<link rel="canonical" href="https://vijaypolimeru.github.io/dict-learn-tcl-programming-from-scratch/" />
+<meta property="og:url" content="https://vijaypolimeru.github.io/dict-learn-tcl-programming-from-scratch/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-22T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dictionary - Tcl Master Series" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@mmistakes" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vijaypolimeru.github.io/dict-learn-tcl-programming-from-scratch/"},"datePublished":"2020-03-22T00:00:00+05:30","url":"https://vijaypolimeru.github.io/dict-learn-tcl-programming-from-scratch/","author":{"@type":"Person","name":"Vijay Kumar Polimeru"},"headline":"Dictionary - Tcl Master Series","dateModified":"2020-03-22T00:00:00+05:30","description":"This post in the Tcl Master Series is dedicated to discuss various operations on Dictionaries in Tcl.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta property="og:image" content="" />
+<meta property="og:description" content="" />
+
+
+  
+
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
+  
+  <!-- INCLUDE BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title=" " href="/atom.xml">
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+
+  <body class="layout--post  dictionary-tcl-master-series">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/index">Home</a></li><li><a href="/blog_home/">BLOG</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform">SIGN-UP</a></li><li><a href="/search/">BLOG SEARCH</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+
+                        <!-- <a class="dropdown-item" href="/faculty/biological-physics/">Biological Physics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biology-maths">Biology & Mathematics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biophysical-chemistry">Biophysical Chemistry</a> -->
+    <header class="masthead">
+  <div class="wrap">
+    
+    
+    
+      
+        <div class="site-title animated fadeIn"><a href="/"> </a></div>
+      
+      <p class="site-description animated fadeIn" itemprop="description"> </p>
+    
+  </div>
+</header><!-- /.masthead -->
+
+
+    <main id="main" class="main-content" aria-label="Content">
+  <article class="h-entry">
+    
+
+
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title p-name">Dictionary - Tcl Master Series
+</h1>
+        
+      </header>
+
+      <div class="page-sidebar">
+        <div class="page-author h-card p-author"><img src="/images/vijay-polimeru-3.jpeg" class="author-avatar u-photo" alt="Vijay Kumar Polimeru"><div class="author-info"><div class="author-name">
+        <span class="p-name">Vijay Kumar Polimeru</span>
+      </div><ul class="author-links"><li class="author-link">
+            <a class="u-url" rel="me" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-lg" title="GitHub"></i></a>
+          </li></ul>
+
+<span class="read-time">1 min read</span>
+
+    <time class="page-date dt-published" datetime="2020-03-22T00:00:00+05:30"><a class="u-url" href="">March 22, 2020</a>
+</time>
+
+  </div>
+</div>
+
+        
+  <h3 class="page-taxonomies-title">Categories</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#tcl" title="Pages filed under Tcl">Tcl</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#tcl-master-series" title="Pages filed under Tcl Master Series">Tcl Master Series</a></li>
+  </ul>
+
+
+        
+  <h3 class="page-taxonomies-title">Tags</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#dict" title="Pages tagged Dict" rel="tag">Dict</a></li><li class="page-taxonomy"><a href="/tags/#tcl" title="Pages tagged Tcl" rel="tag">Tcl</a></li><li class="page-taxonomy"><a href="/tags/#vijay-kumar-polimeru" title="Pages tagged Vijay Kumar Polimeru" rel="tag">Vijay Kumar Polimeru</a></li><li class="page-taxonomy"><a href="/tags/#vijay-polimeru" title="Pages tagged Vijay Polimeru" rel="tag">Vijay Polimeru</a></li>
+  </ul>
+
+
+      </div>
+
+      <div class="page-content">
+        <div class="e-content">
+          <p>This post in the <a href="/Learn-Tcl-Programming-from-Scratch/">Tcl Master Series</a> is dedicated to discuss various operations on <strong><em>Dictionaries</em></strong> in Tcl.</p>
+
+<p>A Dictionary is an collection of <em><code class="highlighter-rouge">key-value</code></em> pairs. A <code class="highlighter-rouge">value</code> can be an integer or double or array or a list or it can be another dictionary and <code class="highlighter-rouge">key</code> is
+simply a <em>name</em> or <em>id</em> which we assign for each value.</p>
+
+<h4 id="creating-a-dict"><strong>Creating a <code class="highlighter-rouge">dict</code></strong></h4>
+
+<ol>
+  <li>
+    <p>Method 1</p>
+
+    <p><code class="highlighter-rouge">set dictname [dict create key1 value1 key2 value2 ....]</code></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> set algorithms [dict create algo1 Newton algo2 KrylovNewton algo3 Broyden]
+ puts $algorithms
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Method 2</p>
+
+    <p><code class="highlighter-rouge">dict set dictname key value</code> - for creating single key value pair. This is primariliy used for changing a <code class="highlighter-rouge">value</code> in a dictionary created using
+ Method 1.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dict set algorithms algo1 Newton
+ puts $algorithms
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="getting-a-value-in-a-dict"><strong>Getting a value in a <code class="highlighter-rouge">dict</code></strong></h4>
+
+<p>Every <code class="highlighter-rouge">value</code> in a dictionary is paired with a <code class="highlighter-rouge">key</code>, which means without a <code class="highlighter-rouge">key</code> we cannot 
+retrive a <code class="highlighter-rouge">value</code> from a <code class="highlighter-rouge">dict</code>. The syntax is, <code class="highlighter-rouge">[dict get $dictname key]</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set algorithms [dict create algo1 Newton algo2 KrylovNewton]
+
+set algo [dict get $algorithms algo1];
+puts $algo
+</code></pre></div></div>
+
+<h4 id="getting-all-keys-and-all-values-in-a-dict"><strong>Getting all <code class="highlighter-rouge">keys</code> and all <code class="highlighter-rouge">values</code> in a <code class="highlighter-rouge">dict</code></strong></h4>
+
+<p>The syntax to get all keys in a <code class="highlighter-rouge">dict</code> is <code class="highlighter-rouge">[dict keys $dictname]</code>. This returns all the <code class="highlighter-rouge">keys</code> in the form of list.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set algorithms [dict create algo1 Newton algo2 KrylovNewton]
+
+set allkeys [dict keys $algorithms];
+puts $allkeys
+</code></pre></div></div>
+
+<p>in the same way we can get all <code class="highlighter-rouge">values</code> in a <code class="highlighter-rouge">dict</code> in the form of a list using <code class="highlighter-rouge">[dict values $dictname]</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set algorithms [dict create algo1 Newton algo2 KrylovNewton]
+
+set allvalues [dict values $algorithms];
+puts $allvalues
+</code></pre></div></div>
+
+<h4 id="iteration-through-a-dict"><strong>Iteration through a <code class="highlighter-rouge">dict</code></strong></h4>
+
+<ol>
+  <li>Using <code class="highlighter-rouge">for</code> loop</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set algorithms [dict create algo1 Newton algo2 KrylovNewton algo3 Broyden algo4 BFGS algo5 etc.]
+set allkeys [dict keys $algorithms]
+
+for {set i 0} {$i &lt; [llength $allkeys]} {incr i 1} {
+    puts "The Value of key [lindex $allkeys $i] is [dict get $algorithms [lindex $allkeys $i]]"
+}
+</code></pre></div></div>
+
+<ol>
+  <li>Using <code class="highlighter-rouge">foreach</code> loop</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set algorithms [dict create algo1 Newton algo2 KrylovNewton algo3 Broyden algo4 BFGS algo5 etc.]
+set allkeys [dict keys $algorithms]
+
+foreach key_id [dict keys $algorithms] {
+   puts "The Value of key $key_id is [dict get $algorithms $key_id]" 
+}
+</code></pre></div></div>
+
+<hr />
+
+<p>More details (if require) will be added soon…</p>
+
+<p>Hope this information may be useful…</p>
+
+<p><strong><em>Note</em></strong> - If any example is not working or any links are not working, please comment I will update with appropriate ones…</p>
+
+<p>Last Updated: 2020-03-22</p>
+
+        </div>
+		
+		<hr>
+		
+		<div class="container">
+		<div class="card">
+		  <div class="card-header">
+			For More Updates ...
+		  </div>
+		  <div class="card-body">
+			<p class="card-text"> Subscribe and download our best stuff (<i><b>for free</b></i>) on OpenSees (Tcl and Python), Visual Studio (C++), Matlab, Finite Element Analysis and several other topics</p>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform" class="btn btn-primary float-right">Subscribe...</a>
+		  </div>
+		</div>
+		</div>
+
+        
+          <div class="page-share">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvijaypolimeru.github.io%2Fdict-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Dictionary+-+Tcl+Master+Series%20https%3A%2F%2Fvijaypolimeru.github.io%2Fdict-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fdict-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
+  <a href="https://reddit.com/submit?title=Dictionary+-+Tcl+Master+Series&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fdict-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
+</div>
+
+        
+
+        
+          
+
+        
+
+        <nav class="page-pagination" role="navigation">
+  
+    <a class="page-previous" href="/research/nonlinear%20finite%20element%20analysis/2020/03/15/nlfea-intro-outline.html">
+      <h4 class="page-pagination-label">Previous</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> Introduction to Nonlinear Finite Element Analysis
+
+      </span>
+    </a>
+  
+
+  
+    <a class="page-next" href="/tcllib-installation-learn-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Next</h4>
+      <span class="page-pagination-title">
+        Standard Tcl Library (Tcllib) - Installation - Tcl Master Series
+ <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  
+</nav>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+    <footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-2x" title="GitHub"></i></a></div><div class="copyright">
+    
+      <p>&copy; 2021  . Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
+    
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/assets/js/main.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+
+</html>

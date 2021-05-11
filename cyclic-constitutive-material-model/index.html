@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code" />
+<meta name="author" content="Vijay Kumar Polimeru" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Defining constitutive relationships () of the constituent materials is one of essential steps in the formulation of nonlinear finite element models. When the relationship is linear such as , it is very easy, one line of code is enough. However, when the relationship is nonlinear (like this - this is the simplest example) it is very difficult to define. The number of load paths (unloading and reloading) will define the complexity of the code." />
+<meta property="og:description" content="Defining constitutive relationships () of the constituent materials is one of essential steps in the formulation of nonlinear finite element models. When the relationship is linear such as , it is very easy, one line of code is enough. However, when the relationship is nonlinear (like this - this is the simplest example) it is very difficult to define. The number of load paths (unloading and reloading) will define the complexity of the code." />
+<link rel="canonical" href="https://vijaypolimeru.github.io/cyclic-constitutive-material-model/" />
+<meta property="og:url" content="https://vijaypolimeru.github.io/cyclic-constitutive-material-model/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-20T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@mmistakes" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vijaypolimeru.github.io/cyclic-constitutive-material-model/"},"datePublished":"2020-02-20T00:00:00+05:30","url":"https://vijaypolimeru.github.io/cyclic-constitutive-material-model/","author":{"@type":"Person","name":"Vijay Kumar Polimeru"},"headline":"A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code","dateModified":"2020-02-20T00:00:00+05:30","description":"Defining constitutive relationships () of the constituent materials is one of essential steps in the formulation of nonlinear finite element models. When the relationship is linear such as , it is very easy, one line of code is enough. However, when the relationship is nonlinear (like this - this is the simplest example) it is very difficult to define. The number of load paths (unloading and reloading) will define the complexity of the code.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta property="og:image" content="https://vijaypolimeru.github.io/images/unit-test-opensees/1.jpg" />
+<meta property="og:description" content="" />
+
+
+  
+
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
+  
+  <!-- INCLUDE BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title=" " href="/atom.xml">
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+
+  <body class="layout--post  a-simple-algorithm-to-define-cyclic-constitutive-material-model-with-example-code">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/index">Home</a></li><li><a href="/blog_home/">BLOG</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform">SIGN-UP</a></li><li><a href="/search/">BLOG SEARCH</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+
+                        <!-- <a class="dropdown-item" href="/faculty/biological-physics/">Biological Physics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biology-maths">Biology & Mathematics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biophysical-chemistry">Biophysical Chemistry</a> -->
+    <header class="masthead">
+  <div class="wrap">
+    
+    
+    
+      
+        <div class="site-title animated fadeIn"><a href="/"> </a></div>
+      
+      <p class="site-description animated fadeIn" itemprop="description"> </p>
+    
+  </div>
+</header><!-- /.masthead -->
+
+
+    <main id="main" class="main-content" aria-label="Content">
+  <article class="h-entry">
+    
+
+
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title p-name">A Simple Algorithm to Define Cyclic Constitutive Material Model - with example code
+</h1>
+        
+      </header>
+
+      <div class="page-sidebar">
+        <div class="page-author h-card p-author"><img src="/images/vijay-polimeru-3.jpeg" class="author-avatar u-photo" alt="Vijay Kumar Polimeru"><div class="author-info"><div class="author-name">
+        <span class="p-name">Vijay Kumar Polimeru</span>
+      </div><ul class="author-links"><li class="author-link">
+            <a class="u-url" rel="me" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-lg" title="GitHub"></i></a>
+          </li></ul>
+
+<span class="read-time">1 min read</span>
+
+    <time class="page-date dt-published" datetime="2020-02-20T00:00:00+05:30"><a class="u-url" href="">February 20, 2020</a>
+</time>
+
+  </div>
+</div>
+
+        
+  <h3 class="page-taxonomies-title">Categories</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#cyclic-constitutive-relationships" title="Pages filed under Cyclic Constitutive Relationships">Cyclic Constitutive Relationships</a></li>
+  </ul>
+
+
+        
+  <h3 class="page-taxonomies-title">Tags</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#constitutive-relationships" title="Pages tagged Constitutive Relationships" rel="tag">Constitutive Relationships</a></li><li class="page-taxonomy"><a href="/tags/#cyclic" title="Pages tagged Cyclic" rel="tag">Cyclic</a></li><li class="page-taxonomy"><a href="/tags/#matlab" title="Pages tagged Matlab" rel="tag">Matlab</a></li><li class="page-taxonomy"><a href="/tags/#steel" title="Pages tagged Steel" rel="tag">Steel</a></li><li class="page-taxonomy"><a href="/tags/#vijay-kumar-polimeru" title="Pages tagged Vijay Kumar Polimeru" rel="tag">Vijay Kumar Polimeru</a></li><li class="page-taxonomy"><a href="/tags/#vijay-polimeru" title="Pages tagged Vijay Polimeru" rel="tag">Vijay Polimeru</a></li>
+  </ul>
+
+
+      </div>
+
+      <div class="page-content">
+        <div class="e-content">
+          <p>Defining constitutive relationships (<script type="math/tex">\sigma - \epsilon</script>) of the constituent materials is one of essential steps in the 
+formulation of nonlinear finite element models. When the <script type="math/tex">\sigma - \epsilon</script> relationship is linear such as <script type="math/tex">\sigma = E\epsilon</script>, it is very easy, one line of
+code is enough. However, when the <script type="math/tex">\sigma - \epsilon</script> relationship is nonlinear (<a href="/images/amrc/steel01.jpg">like this</a> - this is the simplest example)
+it is very difficult to define. The number of load paths (unloading and reloading) will define the complexity of the code.</p>
+
+<p>Any wrong definition of load path results in erroneous results or will show convergence issues. This process requires an <em>easy to read</em> and <em>easy to debug</em> algorithm. In this post, an attempt have 
+been made to provide such an algorithm for <a href="https://opensees.berkeley.edu/wiki/index.php/Steel01_Material">steel01</a>, which is shown in Figure. 1.</p>
+
+<p>Figure 1</p>
+
+<p><img src="/images/amrc/steel01.jpg" class="align-center" alt="" width="400" /></p>
+
+<p>(Note - For simplicity purposes, the influence of parameters <script type="math/tex">a_1, a_2, a_3, a_4</script> have been neglected and all the three load states involved in steel01, have been segregated into individual loadstates as shown in Figure. 2. However, creating such
+individual load states will ease the process of implementation of cyclic constitutive relationship in a computer program)</p>
+
+<p>The basic idea (as shown in Figure. 2) is that, if at any instant the previous strain (OStrain, i.e. strain at step <code class="highlighter-rouge">(i-1)</code>) is in a load state (LoadState) 
+represented by <em>solid black line</em> in Figure. 2, the current strain (CStrain, i.e. strain at step <code class="highlighter-rouge">i</code>) lies in any one of the load states 
+represented by <em>dashed black line</em>. Our objevtive is identify that current load state and calculating the stress by using the equations of that load state.</p>
+
+<p>Figure 2</p>
+
+<p><img src="/images/amrc/load-states.jpg" class="align-center" alt="" width="600" /></p>
+
+<p>This can be implemented in the program as follows,</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">LoadState</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">dStrain</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">% Represents change in direction</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">CStrain</span> <span class="o">&lt;</span> <span class="n">eps_y</span><span class="p">)</span>
+			<span class="n">LoadState</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">else</span>
+			<span class="n">LoadState</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+		<span class="k">end</span>
+	<span class="k">else</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">CStrain</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+			<span class="n">LoadState</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">else</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">CStrain</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">eps_y</span><span class="p">)</span>
+				<span class="n">LoadState</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+			<span class="k">else</span>
+				<span class="n">LoadState</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+			<span class="k">end</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">elseif</span> <span class="p">(</span><span class="n">LoadState</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">...</span>
+<span class="k">...</span>
+<span class="k">...</span>
+<span class="k">end</span>	
+</code></pre></div></div>
+<p>A sample Matlab code for the load states of steel01 as shown in Figure. 2
+for a random strain profile is provided <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7xTwaWpJH89Cx8kfjO-ab9w6d-mS-rF_HZX6-uyzp8Lpb0Q/viewform?usp=sf_link">here</a> for further understanding, please download and comment your feedback and errors (if any).
+The equations involeved in every load path are available in the code.</p>
+
+<hr />
+<p>Hope this information may be useful…</p>
+
+<p><strong><em>Note</em></strong> - If any example is not working or any links are not working, please comment I will update with appropriate ones…</p>
+
+
+        </div>
+		
+		<hr>
+		
+		<div class="container">
+		<div class="card">
+		  <div class="card-header">
+			For More Updates ...
+		  </div>
+		  <div class="card-body">
+			<p class="card-text"> Subscribe and download our best stuff (<i><b>for free</b></i>) on OpenSees (Tcl and Python), Visual Studio (C++), Matlab, Finite Element Analysis and several other topics</p>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform" class="btn btn-primary float-right">Subscribe...</a>
+		  </div>
+		</div>
+		</div>
+
+        
+          <div class="page-share">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvijaypolimeru.github.io%2Fcyclic-constitutive-material-model%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
+  <a href="https://twitter.com/intent/tweet?text=A+Simple+Algorithm+to+Define+Cyclic+Constitutive+Material+Model+-+with+example+code%20https%3A%2F%2Fvijaypolimeru.github.io%2Fcyclic-constitutive-material-model%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fcyclic-constitutive-material-model%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
+  <a href="https://reddit.com/submit?title=A+Simple+Algorithm+to+Define+Cyclic+Constitutive+Material+Model+-+with+example+code&url=https%3A%2F%2Fvijaypolimeru.github.io%2Fcyclic-constitutive-material-model%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
+</div>
+
+        
+
+        
+          
+
+        
+
+        <nav class="page-pagination" role="navigation">
+  
+    <a class="page-previous" href="/ide-setup-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Previous</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> Setting up IDE for Tcl Practice
+
+      </span>
+    </a>
+  
+
+  
+    <a class="page-next" href="/running-tracks-iit-bombay/">
+      <h4 class="page-pagination-label">Next</h4>
+      <span class="page-pagination-title">
+        Top 5 running and jogging tracks in IIT-Bombay
+ <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  
+</nav>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+    <footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-2x" title="GitHub"></i></a></div><div class="copyright">
+    
+      <p>&copy; 2021  . Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
+    
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/assets/js/main.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Loops - Tcl Master Series</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Loops - Tcl Master Series" />
+<meta name="author" content="Vijay Kumar Polimeru" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post in the Tcl Master Series is dedicated to discuss various types of loops and their operations in Tcl." />
+<meta property="og:description" content="This post in the Tcl Master Series is dedicated to discuss various types of loops and their operations in Tcl." />
+<link rel="canonical" href="https://vijaypolimeru.github.io/loops-learn-tcl-programming-from-scratch/" />
+<meta property="og:url" content="https://vijaypolimeru.github.io/loops-learn-tcl-programming-from-scratch/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-12T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Loops - Tcl Master Series" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@mmistakes" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vijaypolimeru.github.io/loops-learn-tcl-programming-from-scratch/"},"datePublished":"2020-02-12T00:00:00+05:30","url":"https://vijaypolimeru.github.io/loops-learn-tcl-programming-from-scratch/","author":{"@type":"Person","name":"Vijay Kumar Polimeru"},"headline":"Loops - Tcl Master Series","dateModified":"2020-02-12T00:00:00+05:30","description":"This post in the Tcl Master Series is dedicated to discuss various types of loops and their operations in Tcl.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta property="og:image" content="" />
+<meta property="og:description" content="" />
+
+
+  
+
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
+  
+  <!-- INCLUDE BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title=" " href="/atom.xml">
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+
+  <body class="layout--post  loops-tcl-master-series">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/index">Home</a></li><li><a href="/blog_home/">BLOG</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform">SIGN-UP</a></li><li><a href="/search/">BLOG SEARCH</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+
+                        <!-- <a class="dropdown-item" href="/faculty/biological-physics/">Biological Physics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biology-maths">Biology & Mathematics</a> -->
+                        <!-- <a class="dropdown-item" href="/faculty/biophysical-chemistry">Biophysical Chemistry</a> -->
+    <header class="masthead">
+  <div class="wrap">
+    
+    
+    
+      
+        <div class="site-title animated fadeIn"><a href="/"> </a></div>
+      
+      <p class="site-description animated fadeIn" itemprop="description"> </p>
+    
+  </div>
+</header><!-- /.masthead -->
+
+
+    <main id="main" class="main-content" aria-label="Content">
+  <article class="h-entry">
+    
+
+
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title p-name">Loops - Tcl Master Series
+</h1>
+        
+      </header>
+
+      <div class="page-sidebar">
+        <div class="page-author h-card p-author"><img src="/images/vijay-polimeru-3.jpeg" class="author-avatar u-photo" alt="Vijay Kumar Polimeru"><div class="author-info"><div class="author-name">
+        <span class="p-name">Vijay Kumar Polimeru</span>
+      </div><ul class="author-links"><li class="author-link">
+            <a class="u-url" rel="me" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-lg" title="GitHub"></i></a>
+          </li></ul>
+
+<span class="read-time">~1 min read</span>
+
+    <time class="page-date dt-published" datetime="2020-02-12T00:00:00+05:30"><a class="u-url" href="">February 12, 2020</a>
+</time>
+
+  </div>
+</div>
+
+        
+  <h3 class="page-taxonomies-title">Categories</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a class="p-category" href="/categories/#tcl" title="Pages filed under Tcl">Tcl</a></li><li class="page-taxonomy"><a class="p-category" href="/categories/#tcl-master-series" title="Pages filed under Tcl Master Series">Tcl Master Series</a></li>
+  </ul>
+
+
+        
+  <h3 class="page-taxonomies-title">Tags</h3>
+  
+  <ul class="page-taxonomies"><li class="page-taxonomy"><a href="/tags/#for-loop" title="Pages tagged For loop" rel="tag">For loop</a></li><li class="page-taxonomy"><a href="/tags/#loops" title="Pages tagged Loops" rel="tag">Loops</a></li><li class="page-taxonomy"><a href="/tags/#tcl" title="Pages tagged Tcl" rel="tag">Tcl</a></li><li class="page-taxonomy"><a href="/tags/#vijay-kumar-polimeru" title="Pages tagged Vijay Kumar Polimeru" rel="tag">Vijay Kumar Polimeru</a></li><li class="page-taxonomy"><a href="/tags/#vijay-polimeru" title="Pages tagged Vijay Polimeru" rel="tag">Vijay Polimeru</a></li><li class="page-taxonomy"><a href="/tags/#while-loop" title="Pages tagged While loop" rel="tag">While loop</a></li>
+  </ul>
+
+
+      </div>
+
+      <div class="page-content">
+        <div class="e-content">
+          <p>This post in the <a href="/Learn-Tcl-Programming-from-Scratch/">Tcl Master Series</a> is dedicated to discuss various types of <strong><em>loops</em></strong> and their operations in Tcl.</p>
+
+<hr />
+<p>Though there exists several kinds of looping systems available in Tcl. Primarily, <code class="highlighter-rouge">for</code>, <code class="highlighter-rouge">foreach</code> and <code class="highlighter-rouge">while</code> are very popular in Tcl. 
+Each of them can be defined in the following ways</p>
+
+<ol>
+  <li><code class="highlighter-rouge">for</code> Loop
+    <div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code> set N 100<span class="p">;</span>
+ for <span class="p">{</span>set i 1<span class="p">}</span> <span class="p">{</span><span class="nv">$i</span> &lt; $N<span class="p">}</span> <span class="p">{</span>incr i 1<span class="p">}</span> <span class="p">{</span>
+     puts <span class="s2">"The Value of i = </span><span class="nv">$i</span><span class="s2">"</span><span class="p">;</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">foreach</code> Loop
+    <div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code> set Variable_Vector <span class="s2">"1 2 3 4 5 6 7 8 9"</span><span class="p">;</span>
+
+ foreach i $Variable_Vector <span class="p">{</span>
+     puts <span class="s2">"The Value of i = </span><span class="nv">$i</span><span class="s2">"</span><span class="p">;</span>
+ <span class="p">}</span>  	
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">while</code> Loop
+    <div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code> set i 0<span class="p">;</span>
+ set N 100<span class="p">;</span>
+ while <span class="p">{</span><span class="nv">$i</span> &lt; $N<span class="p">}</span> <span class="p">{</span>
+     puts <span class="s2">"The Value of i = </span><span class="nv">$i</span><span class="s2">"</span><span class="p">;</span>
+     set i <span class="p">[</span>expr <span class="p">(</span><span class="nv">$i</span> + 1<span class="p">)];</span>
+ <span class="p">}</span> 	
+</code></pre></div>    </div>
+    <p>or</p>
+    <div class="language-tcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code> set i 0<span class="p">;</span>
+ set N 100<span class="p">;</span>
+ while <span class="p">{</span><span class="nv">$i</span> &lt; $N<span class="p">}</span> <span class="p">{</span>
+     puts <span class="s2">"The Value of i = </span><span class="nv">$i</span><span class="s2">"</span><span class="p">;</span>
+     incr i<span class="p">;</span> # incr is equivalent to <span class="p">(</span>set i <span class="p">[</span>expr <span class="p">(</span><span class="nv">$i</span> + 1<span class="p">)])</span>
+ <span class="p">}</span> 	
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<p>More concepts on arrays will be added soon…</p>
+
+<p>Hope this information may be useful…</p>
+
+<p><strong><em>Note</em></strong> - If any example is not working or any links are not working, please comment I will update with appropriate ones…</p>
+
+
+        </div>
+		
+		<hr>
+		
+		<div class="container">
+		<div class="card">
+		  <div class="card-header">
+			For More Updates ...
+		  </div>
+		  <div class="card-body">
+			<p class="card-text"> Subscribe and download our best stuff (<i><b>for free</b></i>) on OpenSees (Tcl and Python), Visual Studio (C++), Matlab, Finite Element Analysis and several other topics</p>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScURIzUxvb4tjywGFZYxrp8w1ZcwOQbXmStFpTe6P19d6_RHA/viewform" class="btn btn-primary float-right">Subscribe...</a>
+		  </div>
+		</div>
+		</div>
+
+        
+          <div class="page-share">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvijaypolimeru.github.io%2Floops-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--facebook btn--small"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i> <span>Share</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Loops+-+Tcl+Master+Series%20https%3A%2F%2Fvijaypolimeru.github.io%2Floops-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--twitter btn--small"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> <span>Tweet</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvijaypolimeru.github.io%2Floops-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--linkedin btn--small"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
+  <a href="https://reddit.com/submit?title=Loops+-+Tcl+Master+Series&url=https%3A%2F%2Fvijaypolimeru.github.io%2Floops-learn-tcl-programming-from-scratch%2F" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="btn btn--reddit btn--small"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i> <span>Reddit</span></a>
+</div>
+
+        
+
+        
+          
+
+        
+
+        <nav class="page-pagination" role="navigation">
+  
+    <a class="page-previous" href="/procedures-learn-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Previous</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> Functions or Procedures - Tcl Master Series
+
+      </span>
+    </a>
+  
+
+  
+    <a class="page-next" href="/some-useful-codes-learn-tcl-programming-from-scratch/">
+      <h4 class="page-pagination-label">Next</h4>
+      <span class="page-pagination-title">
+        Some Useful Practice Codes or Procedures - Tcl Master Series
+ <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  
+</nav>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+    <footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="https://github.com/vijaypolimeru"><i class="fab fa-github-square fa-2x" title="GitHub"></i></a></div><div class="copyright">
+    
+      <p>&copy; 2021  . Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
+    
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/assets/js/main.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+
+</html>
