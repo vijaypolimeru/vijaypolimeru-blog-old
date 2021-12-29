@@ -1,7 +1,7 @@
 # Site settings
 title:          Vijay Kumar Polimeru
 description:    "My Official Blog"
-baseurl:        "/tale"
+baseurl:        "/"
 url:            "https://vijaypolimeru.github.io"
 
 # Google Analytics
